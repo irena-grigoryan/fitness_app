@@ -14,8 +14,6 @@ class TextConstants {
   // Registration
   static const String registration = 'Create account';
   static const String login = 'Login';
-  static const String logout = 'Log Out';
-  static const String deactivate = 'Deactivate account';
 
   static const String username = 'Username';
   static const String userNamePlaceholder = 'Your name';
@@ -39,7 +37,6 @@ class TextConstants {
   // Login
   static const String passwordPlaceholderLogin = 'Enter your password';
   static const String forgotPassword = 'Forgot password?';
-
   static const String doNotHaveAnAccount = 'Do not have an account?';
 
   //Reset password screen
@@ -53,4 +50,27 @@ class TextConstants {
   static const String homeText = 'Home';
   static const String workoutsText = 'Workouts';
   static const String settingsText = 'Settings';
+
+  //DialogBox
+  static const String logoutDialog = 'Are you sure you want to log out?';
+  static const String deactivateDialog =
+      'Are you sure you want to deactivate account?';
+
+  //Settings
+  static const String updateProfile = 'Update profile';
+  static const String notifications = 'Notifications';
+  static const String logout = 'Log Out';
+  static const String deactivate = 'Deactivate account';
+
+  // Update profile
+  static const String updatePhoto = 'Update photo';
+  static const String name = 'Name';
+  static const String nameError = 'Name should contain at least 2 characters';
+  static const String changePassword = 'Change Password';
+  static const String cameraPermission = 'Camera permission';
+  static const String cameAccess =
+      'This app needs camera access to take pictures for upload user profile photo';
+  static const String deny = 'Deny';
+
+  static const String save = 'Save';
 }

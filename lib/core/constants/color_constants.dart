@@ -15,4 +15,6 @@ class ColorConstants {
 
   static const disabledColor = Color(0xFFE1E1E5);
   static const errorColor = Color(0xFFF25252);
+
+  static const backgroundColor = Color(0xFFFCFCFC);
 }

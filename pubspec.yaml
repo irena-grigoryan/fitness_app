@@ -50,11 +50,28 @@ dependencies:
   #Firebase
   firebase_auth: ^4.3.0
   firebase_core: ^2.8.0
+  firebase_storage: ^11.0.16
+
+  # url_launcher: ^6.0.9
+
+  # Permission
+  permission_handler: ^10.2.0
+
+  # Image
+  image_picker: ^0.8.7+3
+
 
   
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  # App logo
+  flutter_launcher_icons: ^0.13.1
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/app/ic_launcher.png"
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -79,6 +96,9 @@ flutter:
     - assets/images/introduction/
     - assets/images/auth/
     - assets/icons/home/
+    - assets/images/home/
+    - assets/icons/settings/
+    - assets/icons/update_profile/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

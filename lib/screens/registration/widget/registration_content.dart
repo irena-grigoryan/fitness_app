@@ -5,7 +5,7 @@ import 'package:fitness_app/core/services/validation_service.dart';
 import 'package:fitness_app/screens/registration/registration_cubit.dart';
 import 'package:fitness_app/widgets/app_button.dart';
 import 'package:fitness_app/widgets/app_loading.dart';
-import 'package:fitness_app/widgets/app_text_field.dart';
+import 'package:fitness_app/widgets/app_textField.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

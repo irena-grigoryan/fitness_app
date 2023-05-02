@@ -5,19 +5,25 @@ class AppButton extends StatelessWidget {
   final String title;
   final bool isEnabled;
   final VoidCallback onTap;
+  final bool? fullSize;
+  final double? width;
+  final double? height;
 
   const AppButton({
     super.key,
     required this.title,
     this.isEnabled = true,
     required this.onTap,
+    this.fullSize = true,
+    this.width,
+    this.height,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      height: 55,
+      width: fullSize! ? double.infinity : width,
+      height: fullSize! ? 55 : height,
       decoration: BoxDecoration(
         gradient: isEnabled
             ? const LinearGradient(
