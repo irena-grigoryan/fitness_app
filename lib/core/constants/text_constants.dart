@@ -70,7 +70,33 @@ class TextConstants {
   static const String cameraPermission = 'Camera permission';
   static const String cameAccess =
       'This app needs camera access to take pictures for upload user profile photo';
-  static const String deny = 'Deny';
 
+  static const String successUpdate = 'Your profile successfully updated';
+
+  static const String deny = 'Deny';
   static const String save = 'Save';
+
+  //Change password screen
+  static const String newPassword = 'New password';
+  static const String passwordUpdated = 'Password successfully updated!';
+  static const String updatePassword =
+      'enter a new password below to update your password.';
+
+  //Notifications screen
+  static const String selectTime = 'Please select reminder time';
+  static const String repeating = 'How often repeat';
+  static const String notificationsError =
+      'Please select how often you want to receive notifications';
+
+  // Days of the week
+  static const String everyday = 'Everyday';
+  static const String monday_friday = 'Mon - Fri';
+  static const String weekends = 'Weekends';
+  static const String monday = 'Monday';
+  static const String tuesday = 'Tue';
+  static const String wednesday = 'Wed';
+  static const String thursday = 'Thu';
+  static const String friday = 'Fri';
+  static const String saturday = 'Sat';
+  static const String sunday = 'Sun';
 }

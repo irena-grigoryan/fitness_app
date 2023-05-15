@@ -14,6 +14,10 @@ class UpdateProfileFillDataState extends UpdateProfileState {
 }
 
 class UpdateProfileProgressState extends UpdateProfileState {
+  final bool isShow;
+
+  UpdateProfileProgressState(this.isShow);
+
   @override
   List<Object?> get props => [identityHashCode(this)];
 }

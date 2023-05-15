@@ -20,4 +20,18 @@ class DataConstants {
         description: TextConstants.introductionDescription3,
         imagePath: PathConstants.introduction3),
   ];
+
+  // Notifications
+  static List<String> days = [
+    TextConstants.everyday,
+    TextConstants.monday_friday,
+    TextConstants.weekends,
+    TextConstants.monday,
+    TextConstants.tuesday,
+    TextConstants.wednesday,
+    TextConstants.thursday,
+    TextConstants.friday,
+    TextConstants.saturday,
+    TextConstants.sunday,
+  ];
 }

@@ -28,8 +28,9 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       final XFile? image =
           await ImagePicker().pickImage(source: ImageSource.gallery);
       if (image != null) {
-        emit(UpdateProfileProgressState());
+        emit(UpdateProfileProgressState(true));
         await FirebaseStorageService.uploadImage(filePath: image.path);
+        emit(UpdateProfileProgressState(false));
         emit(UpdateProfilePhotoSuccessState(image));
       }
     } catch (e) {
@@ -38,9 +39,11 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
   }
 
   updateUserData({name, email}) async {
-    emit(UpdateProfileProgressState());
+    emit(UpdateProfileProgressState(true));
     try {
       await UserService.updateUserData(name: name, email: email);
+      emit(UpdateProfileProgressState(false));
+
       emit(UpdateProfileSuccessState());
     } catch (e) {
       emit(UpdateProfileErrorState(e.toString()));

@@ -7,6 +7,7 @@ import 'package:fitness_app/core/services/validation_service.dart';
 import 'package:fitness_app/screens/update_profile/update_profile_cubit.dart';
 import 'package:fitness_app/widgets/app_button.dart';
 import 'package:fitness_app/widgets/app_dialogs.dart';
+import 'package:fitness_app/widgets/app_loading.dart';
 import 'package:fitness_app/widgets/app_settings_container.dart';
 import 'package:fitness_app/widgets/settings_textField.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
@@ -66,9 +67,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
             fillUserData(context);
           }
           if (state is UpdateProfileProgressState) {
-            return Stack(
-              children: [_getMainContent(context)],
-            );
+            if (state.isShow) {
+              return Stack(
+                children: [_getMainContent(context), _getLoading()],
+              );
+            }
           }
           if (state is UpdateProfileErrorState) {
             WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -84,9 +87,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
           }
           if (state is UpdateProfileSuccessState) {
             Future.delayed(Duration.zero, () {
-              Dialogs.showSuccessDialog(
+              Dialogs.showInformDialog(
                   context: context,
-                  content: 'Your profile successfully updated',
+                  content: TextConstants.successUpdate,
                   onPressed: () {
                     Navigator.of(context).pushReplacementNamed('/main');
                   });
@@ -129,26 +132,28 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                 style: TextStyle(fontWeight: FontWeight.w600),
               ),
               SettingsContainer(
+                  icon: PathConstants.edit,
                   child: Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: SettingsTextField(
-                  controller: _nameController,
-                  placeHolder: TextConstants.userNamePlaceholder,
-                ),
-              )),
+                    padding: const EdgeInsets.only(top: 6),
+                    child: SettingsTextField(
+                      controller: _nameController,
+                      placeHolder: TextConstants.userNamePlaceholder,
+                    ),
+                  )),
               if (isNameInvalid)
                 Text(TextConstants.nameError,
                     style: TextStyle(color: ColorConstants.errorColor)),
               Text(TextConstants.email,
                   style: TextStyle(fontWeight: FontWeight.w600)),
               SettingsContainer(
+                  icon: PathConstants.edit,
                   child: Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: SettingsTextField(
-                  controller: _emailController,
-                  placeHolder: TextConstants.emailPlaceholder,
-                ),
-              )),
+                    padding: const EdgeInsets.only(top: 6),
+                    child: SettingsTextField(
+                      controller: _emailController,
+                      placeHolder: TextConstants.emailPlaceholder,
+                    ),
+                  )),
               if (isEmailInvalid)
                 Text(TextConstants.emailErrorText,
                     style: TextStyle(color: ColorConstants.errorColor)),
@@ -157,7 +162,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   withArrow: true,
                   icon: PathConstants.password,
                   onTap: () {
-                    //go to change password screen
+                    Navigator.of(context).pushNamed('/update_password');
                   },
                   child: const Text(TextConstants.changePassword,
                       style: TextStyle(
@@ -230,5 +235,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     photoUrl = cubit.photoUrl;
     _nameController.text = userName;
     _emailController.text = userEmail;
+  }
+
+  Widget _getLoading() {
+    return const AppLoading();
   }
 }

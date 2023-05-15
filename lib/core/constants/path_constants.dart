@@ -28,4 +28,5 @@ class PathConstants {
 
   //Update Profile
   static const String password = 'assets/icons/update_profile/ic_password.png';
+  static const String edit = 'assets/icons/update_profile/ic_edit.png';
 }

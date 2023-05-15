@@ -11,7 +11,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void logout() async {
     emit(SettingsLoadingState(true));
     try {
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
       AuthService.logOut();
       emit(SettingsLoadingState(false));
       emit(SettingsLogoutState());
@@ -23,7 +23,7 @@ class SettingsCubit extends Cubit<SettingsState> {
   void deactivateAccount() async {
     emit(SettingsLoadingState(true));
     try {
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(seconds: 1));
       AuthService.deactivateAccount();
       emit(SettingsLoadingState(false));
       emit(SettingsDeactivateAccountState());

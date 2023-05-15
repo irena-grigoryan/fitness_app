@@ -112,7 +112,7 @@ class _SettingsContentState extends State<SettingsContent> {
                 withArrow: true,
                 icon: PathConstants.notification,
                 onTap: () {
-                  //action
+                  Navigator.of(context).pushNamed('/notifications');
                 },
                 child: const Text(TextConstants.notifications,
                     style: TextStyle(
@@ -123,7 +123,7 @@ class _SettingsContentState extends State<SettingsContent> {
             SettingsContainer(
                 icon: PathConstants.deactivate,
                 onTap: () {
-                  Dialogs.showDialogBox(
+                  Dialogs.showSelectionDialog(
                       context: context,
                       content: TextConstants.deactivateDialog,
                       onPressed: () {
@@ -136,7 +136,7 @@ class _SettingsContentState extends State<SettingsContent> {
             SettingsContainer(
                 icon: PathConstants.logout,
                 onTap: () {
-                  Dialogs.showDialogBox(
+                  Dialogs.showSelectionDialog(
                       context: context,
                       content: TextConstants.logoutDialog,
                       onPressed: () {

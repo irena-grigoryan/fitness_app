@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dialogs {
-  static showDialogBox(
+  static showSelectionDialog(
           {required BuildContext context,
           String? title,
           String? content,
@@ -34,7 +34,7 @@ class Dialogs {
         ),
       );
 
-  static showSuccessDialog(
+  static showInformDialog(
           {required BuildContext context,
           String? title,
           String? content,
@@ -47,7 +47,9 @@ class Dialogs {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
-                onPressed!();
+                if (onPressed != null) {
+                  onPressed();
+                }
               },
               child: const Text('OK'),
             ),
