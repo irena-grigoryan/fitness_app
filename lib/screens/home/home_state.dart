@@ -7,3 +7,8 @@ class HomeInitialState extends HomeState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }
+
+class HomeFillDataState extends HomeState {
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}

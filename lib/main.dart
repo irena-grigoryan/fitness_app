@@ -60,7 +60,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       title: 'Fitness App',
       theme: ThemeData(
-        backgroundColor: Colors.white,
+        fontFamily: 'NotoSansKR',
       ),
       initialRoute: '/',
       routes: {

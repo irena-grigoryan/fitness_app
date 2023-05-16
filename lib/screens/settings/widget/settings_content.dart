@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';

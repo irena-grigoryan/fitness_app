@@ -182,7 +182,8 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   });
                   if (!(isNameInvalid || isEmailInvalid)) {
                     if (userName != _nameController.text ||
-                        userEmail != _emailController.text) {
+                        userEmail != _emailController.text ||
+                        photoUrl != cubit.photoUrl) {
                       cubit.updateUserData(
                           name: _nameController.text,
                           email: _emailController.text);

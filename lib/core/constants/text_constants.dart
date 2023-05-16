@@ -99,4 +99,10 @@ class TextConstants {
   static const String friday = 'Fri';
   static const String saturday = 'Sat';
   static const String sunday = 'Sun';
+
+  // Home screen
+  static const String checkActivity = 'Get In Shape';
+  static const String topWorkouts = 'Top workouts';
+  static const String newDay = 'Today is a new day!';
+  static const String exerciseOffer = 'Are you ready to do some exercises?';
 }
