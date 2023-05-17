@@ -1,7 +1,9 @@
 import 'package:fitness_app/core/constants/color_constants.dart';
+import 'package:fitness_app/core/constants/data_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/screens/home/home_cubit.dart';
+import 'package:fitness_app/screens/home/widget/home_workout_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -64,6 +66,29 @@ class _HomeContentState extends State<HomeContent> {
               fontSize: 18,
               fontWeight: FontWeight.bold,
             ),
+          ),
+        ),
+        const SizedBox(height: 15),
+        SizedBox(
+          height: 188,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              const SizedBox(width: 20),
+              WorkoutCard(
+                  color: ColorConstants.aerobicColor,
+                  workout: DataConstants.homeWorkouts[0],
+                  onTap: () {
+                    // go to detail screen
+                  }),
+              const SizedBox(width: 15),
+              WorkoutCard(
+                  color: ColorConstants.strengthColor,
+                  workout: DataConstants.homeWorkouts[1],
+                  onTap: () {
+                    // go to detail screen
+                  }),
+            ],
           ),
         ),
       ],

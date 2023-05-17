@@ -19,6 +19,8 @@ class PathConstants {
   static const String profile = 'assets/images/home/ic_profile.png';
   static const String progress = 'assets/icons/home/ic_progress.png';
   static const String play = 'assets/icons/home/ic_play.png';
+  static const String aerobic = 'assets/images/home/aerobic.png';
+  static const String strength = 'assets/images/home/strength.png';
 
   //Settings
   static const String logout = 'assets/icons/settings/ic_logout.png';

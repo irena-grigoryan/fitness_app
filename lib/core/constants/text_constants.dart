@@ -105,4 +105,14 @@ class TextConstants {
   static const String topWorkouts = 'Top workouts';
   static const String newDay = 'Today is a new day!';
   static const String exerciseOffer = 'Are you ready to do some exercises?';
+
+  // Aerobic card
+  static const String aerobicTitle = 'Aerobic';
+  static const String aerobicExercises = '8';
+  static const String aerobicMinutes = '40';
+
+  // Strength card
+  static const String strengthTitle = 'Strength';
+  static const String strengthExercises = '7';
+  static const String strengthMinutes = '35';
 }

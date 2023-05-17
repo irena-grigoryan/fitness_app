@@ -17,4 +17,8 @@ class ColorConstants {
   static const errorColor = Color(0xFFF25252);
 
   static const backgroundColor = Color(0xFFFCFCFC);
+
+  static const strengthColor = Color(0xFF59B1A4);
+
+  static const aerobicColor = Color(0xFFFAA060);
 }

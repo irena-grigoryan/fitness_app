@@ -1,5 +1,6 @@
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/data/workouts_data.dart';
 
 import 'package:fitness_app/screens/introduction/widget/introduction_content.dart';
 
@@ -33,5 +34,20 @@ class DataConstants {
     TextConstants.friday,
     TextConstants.saturday,
     TextConstants.sunday,
+  ];
+
+  static final List<WorkoutData> homeWorkouts = [
+    WorkoutData(
+      title: TextConstants.aerobicTitle,
+      exercises: TextConstants.aerobicExercises,
+      minutes: TextConstants.aerobicMinutes,
+      image: PathConstants.aerobic,
+    ),
+    WorkoutData(
+      title: TextConstants.strengthTitle,
+      exercises: TextConstants.strengthExercises,
+      minutes: TextConstants.strengthMinutes,
+      image: PathConstants.strength,
+    ),
   ];
 }
