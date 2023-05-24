@@ -19,7 +19,10 @@ class _HomeScreenState extends State<HomeScreen> {
       child: BlocConsumer<HomeCubit, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return const HomeContent();
+          final cubit = BlocProvider.of<HomeCubit>(context);
+          return HomeContent(
+            workouts: cubit.workouts,
+          );
         },
       ),
     );

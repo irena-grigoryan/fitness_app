@@ -69,6 +69,8 @@ dependencies:
   # Shared Preferences
   shared_preferences: ^2.1.1
 
+  flutter_secure_storage: ^8.0.0
+
   
 dev_dependencies:
   flutter_test:
@@ -108,6 +110,7 @@ flutter:
     - assets/images/home/
     - assets/icons/settings/
     - assets/icons/update_profile/
+    - assets/images/workouts/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

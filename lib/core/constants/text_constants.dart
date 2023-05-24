@@ -105,6 +105,11 @@ class TextConstants {
   static const String topWorkouts = 'Top workouts';
   static const String newDay = 'Today is a new day!';
   static const String exerciseOffer = 'Are you ready to do some exercises?';
+  static const String finished = 'Finished';
+  static const String completed = 'Completed';
+  static const String inProgress = 'In Progress';
+  static const String timeSpent = 'Time Spent';
+  static const String minutes = 'Minutes';
 
   // Aerobic card
   static const String aerobicTitle = 'Aerobic';
@@ -115,4 +120,25 @@ class TextConstants {
   static const String strengthTitle = 'Strength';
   static const String strengthExercises = '7';
   static const String strengthMinutes = '35';
+
+  // Workouts
+  static const String balanceTitle = 'Balance';
+  static const String balanceExercises = '15';
+  static const String balanceMinutes = '48';
+
+  static const String enduranceTitle = 'Endurance';
+  static const String enduranceExercises = '18';
+  static const String enduranceMinutes = '50';
+
+  static const String fullBodyTitle = 'Full body';
+  static const String fullBodyExercises = '12';
+  static const String fullBodyMinutes = '48';
+
+  static const String flexibilityTitle = 'Flexibility';
+  static const String flexibilityExercises = '8';
+  static const String flexibilityMinutes = '32';
+
+  static const String exercises = 'exercises';
+  static const String minutesLowercase = 'minutes';
+  static const String workoutsSubtitle = 'Hey there, are you ready?';
 }

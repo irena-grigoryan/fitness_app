@@ -230,6 +230,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 
   fillUserData(BuildContext context) {
+    // final currentUser = GlobalConstants.currentUser;
     final cubit = BlocProvider.of<UpdateProfileCubit>(context);
     userName = cubit.userName;
     userEmail = cubit.userEmail;

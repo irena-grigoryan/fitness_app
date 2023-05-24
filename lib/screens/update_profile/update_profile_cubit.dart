@@ -2,6 +2,7 @@ import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/services/storage_service.dart';
 import 'package:fitness_app/core/services/user_service.dart';
+import 'package:fitness_app/core/services/user_storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -30,6 +31,7 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
       if (image != null) {
         emit(UpdateProfileProgressState(true));
         await FirebaseStorageService.uploadImage(filePath: image.path);
+        await UserStorageService.createData('image', image.path);
         emit(UpdateProfileProgressState(false));
         emit(UpdateProfilePhotoSuccessState(image));
       }
@@ -42,6 +44,10 @@ class UpdateProfileCubit extends Cubit<UpdateProfileState> {
     emit(UpdateProfileProgressState(true));
     try {
       await UserService.updateUserData(name: name, email: email);
+
+      await UserStorageService.createData('name', name);
+      await UserStorageService.createData('email', email);
+
       emit(UpdateProfileProgressState(false));
 
       emit(UpdateProfileSuccessState());

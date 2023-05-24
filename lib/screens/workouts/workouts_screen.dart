@@ -1,3 +1,4 @@
+import 'package:fitness_app/screens/workouts/widget/workouts_content.dart';
 import 'package:fitness_app/screens/workouts/workouts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +19,7 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
       child: BlocConsumer<WorkoutsCubit, WorkoutsState>(
         listener: (context, state) {},
         builder: (context, state) {
-          return const Scaffold();
+          return const WorkoutsContent();
         },
       ),
     );

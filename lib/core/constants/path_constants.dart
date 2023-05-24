@@ -17,10 +17,12 @@ class PathConstants {
 
   // Home
   static const String profile = 'assets/images/home/ic_profile.png';
-  static const String progress = 'assets/icons/home/ic_progress.png';
   static const String play = 'assets/icons/home/ic_play.png';
   static const String aerobic = 'assets/images/home/aerobic.png';
   static const String strength = 'assets/images/home/strength.png';
+  static const String finished = 'assets/icons/home/ic_finished.png';
+  static const String progress = 'assets/icons/home/ic_progress.png';
+  static const String time = 'assets/icons/home/ic_time.png';
 
   //Settings
   static const String logout = 'assets/icons/settings/ic_logout.png';
@@ -33,4 +35,10 @@ class PathConstants {
   //Update Profile
   static const String password = 'assets/icons/update_profile/ic_password.png';
   static const String edit = 'assets/icons/update_profile/ic_edit.png';
+
+  // Workouts
+  static const String balance = 'assets/images/workouts/balance.jpg';
+  static const String endurance = 'assets/images/workouts/endurance.jpg';
+  static const String fullBody = 'assets/images/workouts/full_body.jpg';
+  static const String flexibility = 'assets/images/workouts/flexibility.jpg';
 }

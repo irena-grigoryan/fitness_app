@@ -18,7 +18,9 @@ class ColorConstants {
 
   static const backgroundColor = Color(0xFFFCFCFC);
 
-  static const strengthColor = Color(0xFF59B1A4);
+  static const turquoise = Color(0xFF00D0C3);
 
-  static const aerobicColor = Color(0xFFFAA060);
+  static const lightOrange = Color(0xFFFDC101);
+
+  static const purple = Color(0xFF8624DD);
 }

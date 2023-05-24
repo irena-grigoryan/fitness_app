@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fitness_app/core/services/notification_service.dart';
+import 'package:fitness_app/data/user_data.dart';
 import 'package:fitness_app/screens/introduction/introduction_screen.dart';
 import 'package:fitness_app/screens/login/login_screen.dart';
 import 'package:fitness_app/screens/main/main_screen.dart';
@@ -14,6 +15,8 @@ import 'package:fitness_app/di/dependency_injections.dart' as di;
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
+
+import 'core/constants/global_constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,9 +59,14 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    final isLoggedIn = FirebaseAuth.instance.currentUser != null;
+    final currentUser = FirebaseAuth.instance.currentUser;
+    final isLoggedIn = currentUser != null;
+    if (isLoggedIn) {
+      GlobalConstants.currentUser = UserData.fromFirebase(currentUser);
+    }
     return MaterialApp(
       title: 'Fitness App',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'NotoSansKR',
       ),

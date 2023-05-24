@@ -36,7 +36,7 @@ class DataConstants {
     TextConstants.sunday,
   ];
 
-  static final List<WorkoutData> homeWorkouts = [
+  static final List<WorkoutData> topWorkouts = [
     WorkoutData(
       title: TextConstants.aerobicTitle,
       exercises: TextConstants.aerobicExercises,
@@ -48,6 +48,45 @@ class DataConstants {
       exercises: TextConstants.strengthExercises,
       minutes: TextConstants.strengthMinutes,
       image: PathConstants.strength,
+    ),
+  ];
+
+  static final List<WorkoutData> workouts = [
+    WorkoutData(
+      id: '0',
+      title: TextConstants.balanceTitle,
+      exercises: TextConstants.balanceExercises,
+      minutes: TextConstants.balanceMinutes,
+      currentProgress: 0,
+      progress: 15,
+      image: PathConstants.balance,
+    ),
+    WorkoutData(
+      id: '1',
+      title: TextConstants.enduranceTitle,
+      exercises: TextConstants.enduranceExercises,
+      minutes: TextConstants.enduranceMinutes,
+      currentProgress: 0,
+      progress: 18,
+      image: PathConstants.endurance,
+    ),
+    WorkoutData(
+      id: '2',
+      title: TextConstants.fullBodyTitle,
+      exercises: TextConstants.fullBodyExercises,
+      minutes: TextConstants.fullBodyMinutes,
+      currentProgress: 0,
+      progress: 12,
+      image: PathConstants.fullBody,
+    ),
+    WorkoutData(
+      id: '3',
+      title: TextConstants.flexibilityTitle,
+      exercises: TextConstants.flexibilityExercises,
+      minutes: TextConstants.flexibilityMinutes,
+      currentProgress: 0,
+      progress: 8,
+      image: PathConstants.flexibility,
     ),
   ];
 }

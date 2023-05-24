@@ -2,13 +2,19 @@ import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/data_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/data/workouts_data.dart';
 import 'package:fitness_app/screens/home/home_cubit.dart';
+import 'package:fitness_app/screens/home/widget/home_workout_progress.dart';
 import 'package:fitness_app/screens/home/widget/home_workout_card.dart';
+import 'package:fitness_app/screens/main/main_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeContent extends StatefulWidget {
-  const HomeContent({
+  final List<WorkoutData> workouts;
+
+  HomeContent({
+    required this.workouts,
     Key? key,
   }) : super(key: key);
 
@@ -43,32 +49,59 @@ class _HomeContentState extends State<HomeContent> {
         padding: const EdgeInsets.symmetric(vertical: 20),
         children: [
           _getProfileData(context),
-          const SizedBox(height: 35),
+          const SizedBox(height: 25),
           _getOffer(context),
-          const SizedBox(height: 30),
+          const SizedBox(height: 25),
           _getExercisesList(context),
           const SizedBox(height: 25),
+          HomeWorkoutProgress(),
         ],
       ),
     );
   }
 
   Widget _getExercisesList(BuildContext context) {
+    final cubitMain = BlocProvider.of<MainCubit>(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Padding(
+        Padding(
           padding: EdgeInsets.symmetric(horizontal: 20),
-          child: Text(
-            TextConstants.topWorkouts,
-            style: TextStyle(
-              color: ColorConstants.textBlack,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-            ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                TextConstants.topWorkouts,
+                style: TextStyle(
+                  color: ColorConstants.textBlack,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  cubitMain.selectItem(0);
+                },
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(12, 2, 12, 2),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      color: ColorConstants.mainColor),
+                  child: Text(
+                    'View all',
+                    style: TextStyle(
+                      color: ColorConstants.white,
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
-        const SizedBox(height: 15),
+        const SizedBox(height: 20),
         SizedBox(
           height: 188,
           child: ListView(
@@ -76,18 +109,19 @@ class _HomeContentState extends State<HomeContent> {
             children: [
               const SizedBox(width: 20),
               WorkoutCard(
-                  color: ColorConstants.aerobicColor,
-                  workout: DataConstants.homeWorkouts[0],
+                  color: ColorConstants.purple,
+                  workout: DataConstants.topWorkouts[0],
                   onTap: () {
                     // go to detail screen
                   }),
               const SizedBox(width: 15),
               WorkoutCard(
-                  color: ColorConstants.strengthColor,
-                  workout: DataConstants.homeWorkouts[1],
+                  color: ColorConstants.turquoise,
+                  workout: DataConstants.topWorkouts[1],
                   onTap: () {
                     // go to detail screen
                   }),
+              SizedBox(width: 20),
             ],
           ),
         ),
@@ -98,11 +132,14 @@ class _HomeContentState extends State<HomeContent> {
   Widget _getProfileData(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Row(
-        children: [
-          BlocBuilder<HomeCubit, HomeState>(
-            builder: (context, state) {
-              return GestureDetector(
+      child: BlocBuilder<HomeCubit, HomeState>(
+        builder: (context, state) {
+          final userName =
+              state is HomeFillDataState ? state.userName : 'Dear friend';
+          final photoUrl = state is HomeFillDataState ? state.photoURL : null;
+          return Row(
+            children: [
+              GestureDetector(
                 child: photoUrl == null
                     ? const SizedBox(
                         height: 54,
@@ -117,53 +154,54 @@ class _HomeContentState extends State<HomeContent> {
                         child: ClipOval(
                             child: FadeInImage.assetNetwork(
                                 placeholder: PathConstants.profile,
-                                image: photoUrl!,
+                                image: photoUrl,
                                 fit: BoxFit.cover,
                                 width: 200,
                                 height: 120))),
                 onTap: () {
                   Navigator.of(context).pushNamed('/update_profile');
                 },
-              );
-            },
-          ),
-          const SizedBox(
-            width: 24,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Hi, $userName!',
-                style: TextStyle(
-                  fontSize: 18,
-                ),
               ),
-              Text(
-                TextConstants.checkActivity,
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
+              const SizedBox(
+                width: 24,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Hi, $userName!',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                  ),
+                  Text(
+                    TextConstants.checkActivity,
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
               ),
             ],
-          ),
-        ],
+          );
+        },
       ),
     );
   }
 
   Widget _getOffer(BuildContext context) {
+    final cubitMain = BlocProvider.of<MainCubit>(context);
     return InkWell(
       onTap: () {
-        //navigate to workouts screen
+        cubitMain.selectItem(0);
       },
       child: Container(
         width: double.infinity,
         margin: const EdgeInsets.symmetric(horizontal: 20),
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24),
           color: ColorConstants.white,
           boxShadow: [
             BoxShadow(
