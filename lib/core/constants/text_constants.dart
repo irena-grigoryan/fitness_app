@@ -124,7 +124,7 @@ class TextConstants {
   // Workouts
   static const String balanceTitle = 'Balance';
   static const String balanceExercises = '15';
-  static const String balanceMinutes = '48';
+  static const String balanceMinutes = '32';
 
   static const String enduranceTitle = 'Endurance';
   static const String enduranceExercises = '18';
@@ -141,4 +141,14 @@ class TextConstants {
   static const String exercises = 'exercises';
   static const String minutesLowercase = 'minutes';
   static const String workoutsSubtitle = 'Hey there, are you ready?';
+
+  // Workout Steps screen
+  static const String exercise1 = "Exercise 1";
+  static const int exercise1Minutes = 12;
+
+  static const String exercise2 = "Exercise 2";
+  static const int exercise2Minutes = 8;
+
+  static const String exercise3 = "Exercise 3";
+  static const int exercise3Minutes = 12;
 }

@@ -7,3 +7,12 @@ class WorkoutsInitialState extends WorkoutsState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }
+
+class WorkoutsOnSelectState extends WorkoutsState {
+  final WorkoutData workout;
+
+  WorkoutsOnSelectState({required this.workout});
+
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}

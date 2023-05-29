@@ -41,4 +41,8 @@ class PathConstants {
   static const String endurance = 'assets/images/workouts/endurance.jpg';
   static const String fullBody = 'assets/images/workouts/full_body.jpg';
   static const String flexibility = 'assets/images/workouts/flexibility.jpg';
+
+  // Workout Steps
+  static const String clock = 'assets/icons/workout_steps/ic_clock.png';
+  static const String training = 'assets/icons/workout_steps/ic_training.png';
 }

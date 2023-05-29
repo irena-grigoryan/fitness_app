@@ -1,6 +1,7 @@
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/workouts_details_data.dart';
 
 import 'package:fitness_app/screens/introduction/widget/introduction_content.dart';
 
@@ -53,40 +54,116 @@ class DataConstants {
 
   static final List<WorkoutData> workouts = [
     WorkoutData(
-      id: '0',
-      title: TextConstants.balanceTitle,
-      exercises: TextConstants.balanceExercises,
-      minutes: TextConstants.balanceMinutes,
-      currentProgress: 0,
-      progress: 15,
-      image: PathConstants.balance,
-    ),
+        id: '1',
+        title: TextConstants.balanceTitle,
+        exercises: TextConstants.balanceExercises,
+        minutes: TextConstants.balanceMinutes,
+        currentProgress: 0,
+        progress: 15,
+        image: PathConstants.balance,
+        workoutDetailsList: [
+          WorkoutDetailsData(
+            id: 'exercise1',
+            title: TextConstants.exercise1,
+            minutes: TextConstants.exercise1Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise2',
+            title: TextConstants.exercise2,
+            minutes: TextConstants.exercise2Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise3',
+            title: TextConstants.exercise3,
+            minutes: TextConstants.exercise3Minutes,
+            progress: 0,
+          ),
+        ]),
     WorkoutData(
-      id: '1',
-      title: TextConstants.enduranceTitle,
-      exercises: TextConstants.enduranceExercises,
-      minutes: TextConstants.enduranceMinutes,
-      currentProgress: 0,
-      progress: 18,
-      image: PathConstants.endurance,
-    ),
+        id: '2',
+        title: TextConstants.enduranceTitle,
+        exercises: TextConstants.enduranceExercises,
+        minutes: TextConstants.enduranceMinutes,
+        currentProgress: 0,
+        progress: 18,
+        image: PathConstants.endurance,
+        workoutDetailsList: [
+          WorkoutDetailsData(
+            id: 'exercise1',
+            title: TextConstants.exercise1,
+            minutes: TextConstants.exercise1Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise2',
+            title: TextConstants.exercise2,
+            minutes: TextConstants.exercise2Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise3',
+            title: TextConstants.exercise3,
+            minutes: TextConstants.exercise3Minutes,
+            progress: 0,
+          ),
+        ]),
     WorkoutData(
-      id: '2',
-      title: TextConstants.fullBodyTitle,
-      exercises: TextConstants.fullBodyExercises,
-      minutes: TextConstants.fullBodyMinutes,
-      currentProgress: 0,
-      progress: 12,
-      image: PathConstants.fullBody,
-    ),
+        id: '3',
+        title: TextConstants.fullBodyTitle,
+        exercises: TextConstants.fullBodyExercises,
+        minutes: TextConstants.fullBodyMinutes,
+        currentProgress: 0,
+        progress: 12,
+        image: PathConstants.fullBody,
+        workoutDetailsList: [
+          WorkoutDetailsData(
+            id: 'exercise1',
+            title: TextConstants.exercise1,
+            minutes: TextConstants.exercise1Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise2',
+            title: TextConstants.exercise2,
+            minutes: TextConstants.exercise2Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise3',
+            title: TextConstants.exercise3,
+            minutes: TextConstants.exercise3Minutes,
+            progress: 0,
+          ),
+        ]),
     WorkoutData(
-      id: '3',
-      title: TextConstants.flexibilityTitle,
-      exercises: TextConstants.flexibilityExercises,
-      minutes: TextConstants.flexibilityMinutes,
-      currentProgress: 0,
-      progress: 8,
-      image: PathConstants.flexibility,
-    ),
+        id: '4',
+        title: TextConstants.flexibilityTitle,
+        exercises: TextConstants.flexibilityExercises,
+        minutes: TextConstants.flexibilityMinutes,
+        currentProgress: 0,
+        progress: 8,
+        image: PathConstants.flexibility,
+        workoutDetailsList: [
+          WorkoutDetailsData(
+            id: 'exercise1',
+            title: TextConstants.exercise1,
+            minutes: TextConstants.exercise1Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise2',
+            title: TextConstants.exercise2,
+            minutes: TextConstants.exercise2Minutes,
+            progress: 0,
+          ),
+          WorkoutDetailsData(
+            id: 'exercise3',
+            title: TextConstants.exercise3,
+            minutes: TextConstants.exercise3Minutes,
+            progress: 0,
+          ),
+        ]),
   ];
 }

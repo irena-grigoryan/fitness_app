@@ -12,9 +12,9 @@ class WorkoutsItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cubit = BlocProvider.of<WorkoutsCubit>(context);
     final progressPercentage =
         (workoutData.currentProgress! / workoutData.progress!) * 100;
-
     return Container(
       width: double.infinity,
       height: 140,
@@ -36,7 +36,7 @@ class WorkoutsItem extends StatelessWidget {
             return InkWell(
               borderRadius: BorderRadius.circular(24),
               onTap: () {
-                //navigate
+                cubit.selectWorkout(workoutData);
               },
               child: Container(
                 padding:
