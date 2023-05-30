@@ -3,7 +3,7 @@ import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/data/workouts_data.dart';
 import 'package:fitness_app/data/workouts_details_data.dart';
 
-import 'package:fitness_app/screens/introduction/widget/introduction_content.dart';
+import 'package:fitness_app/presentation/screens/introduction/widget/introduction_content.dart';
 
 class DataConstants {
   // Introduction
