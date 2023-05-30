@@ -6,6 +6,7 @@ import 'package:fitness_app/screens/notifications/notifications_cubit.dart';
 import 'package:fitness_app/screens/registration/registration_cubit.dart';
 import 'package:fitness_app/screens/reset_password/reset_password_cubit.dart';
 import 'package:fitness_app/screens/settings/settings_cubit.dart';
+import 'package:fitness_app/screens/start_workout/workout_start_cubit.dart';
 import 'package:fitness_app/screens/update_password/update_password_cubit.dart';
 import 'package:fitness_app/screens/update_profile/update_profile_cubit.dart';
 import 'package:fitness_app/screens/workout_steps/workout_steps_cubit.dart';
@@ -28,4 +29,5 @@ Future<void> init() async {
   sl.registerFactory(() => UpdatePasswordCubit());
   sl.registerFactory(() => NotificationsCubit());
   sl.registerFactory(() => WorkoutStepsCubit(sl()));
+  sl.registerFactory(() => WorkoutStartCubit());
 }

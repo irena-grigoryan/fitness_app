@@ -7,4 +7,22 @@ part 'workout_steps_state.dart';
 
 class WorkoutStepsCubit extends Cubit<WorkoutStepsState> {
   WorkoutStepsCubit(WorkoutData workout) : super(WorkoutStepsInitialState());
+
+  late WorkoutData workout;
+
+  getInitialData(currentWorkout) {
+    workout = currentWorkout;
+    emit(WorkoutStepsReloadState(workout: workout));
+  }
+
+  onStartTap(
+      {WorkoutData? currentWorkout,
+      int? currentIndex,
+      bool? currentIsReplace}) {
+    emit(WorkoutStepsStartState(
+      workout: currentWorkout ?? workout,
+      index: currentIndex ?? 0,
+      isReplace: currentIsReplace ?? false,
+    ));
+  }
 }
