@@ -151,4 +151,16 @@ class TextConstants {
 
   static const String exercise3 = "Exercise 3";
   static const int exercise3Minutes = 12;
+
+//
+  static const String balanceStep1 =
+      "Start in a comfortable seated position and take a few deep breaths to center your mind.";
+  static const String balanceStep2 =
+      "Move into Downward Facing Dog, pressing your palms and heels into the mat, forming an inverted V shape.";
+  static const String balanceStep3 =
+      "Transition to a high plank position, aligning your wrists under your shoulders, engaging your core.";
+  static const String balanceStep4 =
+      "Lower to the mat and transition into Cobra pose, lifting your chest off the ground while keeping your pelvis grounded.";
+  static const String balanceStep5 =
+      "End your practice with Savasana, lying flat on your back and focusing on deep, relaxed breathing.";
 }

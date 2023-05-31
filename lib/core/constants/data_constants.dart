@@ -67,6 +67,13 @@ class DataConstants {
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
             progress: 0,
+            steps: [
+              TextConstants.balanceStep1,
+              TextConstants.balanceStep2,
+              TextConstants.balanceStep3,
+              TextConstants.balanceStep4,
+              TextConstants.balanceStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise2',

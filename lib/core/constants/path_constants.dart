@@ -45,4 +45,6 @@ class PathConstants {
   // Workout Steps
   static const String clock = 'assets/icons/workout_steps/ic_clock.png';
   static const String training = 'assets/icons/workout_steps/ic_training.png';
+
+  static const String swipe = 'assets/icons/workout_steps/ic_swipe.png';
 }

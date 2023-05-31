@@ -1,6 +1,9 @@
 import 'package:fitness_app/data/workouts_data.dart';
-import 'package:fitness_app/screens/workout_start/widget/workout_start_content.dart';
+import 'package:fitness_app/presentation/screens/workout_start/widget/workout_start_content.dart';
+import 'package:fitness_app/presentation/screens/workout_start/workout_start_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fitness_app/di/dependency_injections.dart' as di;
 
 class WorkoutStartScreen extends StatelessWidget {
   final WorkoutData? workout;
@@ -13,6 +16,22 @@ class WorkoutStartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const WorkoutStartContent();
+    final currentExercise = workout!.workoutDetailsList![index!];
+    final nextExercise = index! + 1 < workout!.workoutDetailsList!.length
+        ? workout!.workoutDetailsList![index! + 1]
+        : null;
+    return BlocProvider<WorkoutStartCubit>(
+      create: (context) => di.sl(),
+      child: BlocConsumer<WorkoutStartCubit, WorkoutStartState>(
+        listener: (context, state) {},
+        builder: (context, state) {
+          return WorkoutStartContent(
+            workout: workout!,
+            exercise: currentExercise,
+            nextExercise: nextExercise,
+          );
+        },
+      ),
+    );
   }
 }
