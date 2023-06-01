@@ -10,6 +10,7 @@ class TextConstants {
       'Create achievable fitness goals and strategies to support it.';
   static const String introductionDescription3 =
       'Devise time for your body and mind to keep your body fit and strong.';
+  static const String skip = 'Skip';
 
   // Registration
   static const String registration = 'Create account';

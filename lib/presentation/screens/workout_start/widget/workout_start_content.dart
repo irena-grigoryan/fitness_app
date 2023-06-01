@@ -1,3 +1,4 @@
+import 'package:fitness_app/presentation/screens/workout_start/widget/workout_video_player.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
@@ -36,7 +37,8 @@ class WorkoutStartContent extends StatelessWidget {
       panel: _getPanel(context),
       body: _getBody(context),
       isDraggable: true,
-      minHeight: MediaQuery.of(context).size.height * 0.60,
+      minHeight: MediaQuery.of(context).size.height * 0.58,
+      maxHeight: MediaQuery.of(context).size.height * 0.87,
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(40),
         topRight: Radius.circular(40),
@@ -58,8 +60,8 @@ class WorkoutStartContent extends StatelessWidget {
               _getExercisesSteps(),
             ]),
           ),
-          const SizedBox(height: 18),
-          _getButton(context),
+          // const SizedBox(height: 18),
+          // _getButton(context),
         ],
       ),
     );
@@ -79,6 +81,8 @@ class WorkoutStartContent extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 23),
+            _getVideo(context),
+            const SizedBox(height: 8),
           ],
         ));
   }
@@ -107,6 +111,25 @@ class WorkoutStartContent extends StatelessWidget {
           Navigator.of(context).pop();
         },
       ),
+    );
+  }
+
+  Widget _getVideo(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 250,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(24),
+        color: ColorConstants.white,
+        boxShadow: [
+          BoxShadow(
+            color: ColorConstants.textBlack.withOpacity(0.3),
+            blurRadius: 5.0,
+            spreadRadius: 1.1,
+          ),
+        ],
+      ),
+      child: WorkoutVideoPlayer(),
     );
   }
 

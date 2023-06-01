@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/data_constants.dart';
+import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/presentation/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
@@ -110,7 +111,20 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     ),
                   ),
                 )),
-        const SizedBox(height: 30),
+        const SizedBox(height: 5),
+        TextButton(
+          child: Text(
+            TextConstants.skip,
+            style: TextStyle(
+              color: ColorConstants.mainColor,
+              fontSize: 16,
+            ),
+          ),
+          onPressed: () {
+            cubit.skipIntro();
+          },
+        ),
+        const SizedBox(height: 25),
       ],
     );
   }

@@ -26,4 +26,8 @@ class IntroductionCubit extends Cubit<IntroductionState> {
 
     emit(IntroductionScreenChangedState(counter: pageIndex));
   }
+
+  skipIntro() {
+    emit(IntroductionNextScreenState());
+  }
 }
