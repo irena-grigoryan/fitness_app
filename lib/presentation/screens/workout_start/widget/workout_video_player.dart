@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
+import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
 class WorkoutVideoPlayer extends StatefulWidget {
   WorkoutVideoPlayer();
@@ -13,38 +14,73 @@ class WorkoutVideoPlayer extends StatefulWidget {
 
 class _WorkoutVideoPlayerState extends State<WorkoutVideoPlayer> {
   late ChewieController _chewieController;
-  late VideoPlayerController _controller;
+  // late VideoPlayerController _controller;
+  late YoutubePlayerController _youtubeController;
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/bee.mp4 '); // for example
+    const url =
+        'https://www.youtube.com/watch?v=l1BNMmCRHZQ&list=PLLALQuK1NDrgYGaZTxm3qsuJnpZlO2Z7J&index=9';
+    final id = YoutubePlayer.convertUrlToId(url);
 
-    _chewieController = ChewieController(
-        videoPlayerController: _controller,
-        autoInitialize: true,
-        aspectRatio: 15 / 10,
-        looping: true,
-        autoPlay: false,
-        placeholder: Center(child: CupertinoActivityIndicator()),
-        deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
-        materialProgressColors:
-            ChewieProgressColors(playedColor: ColorConstants.mainColor));
+    _youtubeController = YoutubePlayerController(
+        initialVideoId: id!,
+        flags: const YoutubePlayerFlags(
+          autoPlay: false,
+          controlsVisibleAtStart: true,
+          enableCaption: false,
+          loop: true,
+        ));
+
+    // _controller = VideoPlayerController.network(id);
+
+    // for example
+
+    // _chewieController = ChewieController(
+    //     videoPlayerController: _controller,
+    //     autoInitialize: true,
+    //     aspectRatio: 15 / 10,
+    //     looping: true,
+    //     autoPlay: false,
+    //     placeholder: Center(child: CupertinoActivityIndicator()),
+    //     deviceOrientationsAfterFullScreen: [DeviceOrientation.portraitUp],
+    //     materialProgressColors:
+    //         ChewieProgressColors(playedColor: ColorConstants.mainColor));
     super.initState();
   }
 
   @override
   void dispose() {
-    _chewieController.dispose();
-    _controller.dispose();
+    // _chewieController.dispose();
+    // _controller.dispose();
+    _youtubeController.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: _controller.value.aspectRatio,
-      child: _getContainer(),
+    return
+        // AspectRatio(
+        // aspectRatio: _youtubeController.value,
+        // child:
+        _getContainer();
+    // _getVideo();
+    // );
+  }
+
+  Widget _getVideo() {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(24),
+      child: YoutubePlayer(
+        controller: _youtubeController,
+        aspectRatio: 20 / 10,
+        showVideoProgressIndicator: true,
+        progressIndicatorColor: Colors.amber,
+        progressColors: ProgressBarColors(
+          playedColor: Colors.amber,
+          handleColor: Colors.amberAccent,
+        ),
+      ),
     );
   }
 
@@ -52,7 +88,17 @@ class _WorkoutVideoPlayerState extends State<WorkoutVideoPlayer> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(24),
       child: Theme(
-        child: Chewie(controller: _chewieController),
+        child: YoutubePlayer(
+          controller: _youtubeController,
+          aspectRatio: 16 / 9,
+          showVideoProgressIndicator: true,
+          progressIndicatorColor: Colors.amber,
+          progressColors: ProgressBarColors(
+            playedColor: Colors.amber,
+            handleColor: Colors.amberAccent,
+          ),
+        ),
+        // Chewie(controller: _chewieController),
         data: Theme.of(context).copyWith(platform: TargetPlatform.android),
       ),
     );

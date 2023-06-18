@@ -49,13 +49,13 @@ class ExerciseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
+    // final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
     return BlocBuilder<WorkoutStepsCubit, WorkoutStepsState>(
       builder: (context, state) {
         return InkWell(
           borderRadius: BorderRadius.circular(40),
           onTap: () {
-            cubit.onStartTap(currentWorkout: workout, currentIndex: index);
+            // cubit.onStartTap(currentWorkout: workout, currentIndex: index);
           },
           child: Container(
             width: double.infinity,

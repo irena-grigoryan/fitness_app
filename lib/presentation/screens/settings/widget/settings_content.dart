@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/settings/settings_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_dialogs.dart';
 import 'package:fitness_app/presentation/widgets/app_loading.dart';
@@ -19,34 +20,41 @@ class SettingsContent extends StatefulWidget {
 }
 
 class _SettingsContentState extends State<SettingsContent> {
+  String? userName;
+  String? email;
+  String? photoUrl;
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-        color: ColorConstants.backgroundColor,
-        height: double.infinity,
-        width: double.infinity,
-        child: Stack(children: [
-          _getSettingsBody(context),
-          BlocBuilder<SettingsCubit, SettingsState>(
-            builder: (context, state) {
-              if (state is SettingsLoadingState) {
-                if (state.isShow) {
-                  return _getLoading();
-                }
-              } else {
-                return const SizedBox();
-              }
-              return const SizedBox();
-            },
-          ),
-        ]));
+    return BlocBuilder<SettingsCubit, SettingsState>(
+      builder: (context, state) {
+        if (state is SettingsLoadingState) {
+          if (state.isShow) {
+            return _getLoading();
+          }
+        }
+        if (state is SettingsFillDataState) {
+          _fillData(state.user, context);
+        }
+        // else {
+        //   return const SizedBox();
+        // }
+        return Container(
+            color: ColorConstants.backgroundColor,
+            height: double.infinity,
+            width: double.infinity,
+            child: Stack(children: [
+              _getSettingsBody(context),
+            ]));
+      },
+    );
   }
 
   Widget _getSettingsBody(BuildContext context) {
-    final User? user = FirebaseAuth.instance.currentUser;
-    String? displayName = user?.displayName ?? 'No Username';
-    String? email = user?.email ?? 'No email';
-    var photoUrl = user?.photoURL;
+    // final User? user = FirebaseAuth.instance.currentUser;
+    // String? displayName = user?.displayName ?? 'No Username';
+    // String? email = user?.email ?? 'No email';
+    // var photoUrl = user?.photoURL;
     final cubit = BlocProvider.of<SettingsCubit>(context);
     return SafeArea(
       child: SingleChildScrollView(
@@ -68,7 +76,7 @@ class _SettingsContentState extends State<SettingsContent> {
                           child: ClipOval(
                               child: FadeInImage.assetNetwork(
                             placeholder: PathConstants.profile,
-                            image: photoUrl,
+                            image: photoUrl!,
                             fit: BoxFit.cover,
                             width: 200,
                             height: 120,
@@ -78,12 +86,12 @@ class _SettingsContentState extends State<SettingsContent> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(displayName,
+                      Text(userName ?? '',
                           style: const TextStyle(
                               fontSize: 24, fontWeight: FontWeight.bold)),
-                      Text(email,
+                      Text(email ?? '',
                           style: const TextStyle(
-                            fontSize: 16,
+                            fontSize: 15,
                           )),
                     ],
                   ),
@@ -98,7 +106,7 @@ class _SettingsContentState extends State<SettingsContent> {
                   String? newName = await Navigator.pushNamed<dynamic>(
                       context, '/update_profile');
                   setState(() {
-                    displayName = newName;
+                    userName = newName;
                   });
                 },
                 child: const Text(TextConstants.updateProfile,
@@ -153,5 +161,17 @@ class _SettingsContentState extends State<SettingsContent> {
 
   Widget _getLoading() {
     return const AppLoading();
+  }
+
+  void _fillData(UserEntity user, BuildContext context) {
+    if (user.name != null) {
+      userName = user.name;
+    }
+    if (user.email != null) {
+      email = user.email;
+    }
+    if (user.photo != null) {
+      photoUrl = user.photo;
+    }
   }
 }

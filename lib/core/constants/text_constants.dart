@@ -124,19 +124,19 @@ class TextConstants {
 
   // Workouts
   static const String balanceTitle = 'Balance';
-  static const String balanceExercises = '15';
+  static const String balanceExercises = '3';
   static const String balanceMinutes = '32';
 
   static const String enduranceTitle = 'Endurance';
-  static const String enduranceExercises = '18';
+  static const String enduranceExercises = '3';
   static const String enduranceMinutes = '50';
 
   static const String fullBodyTitle = 'Full body';
-  static const String fullBodyExercises = '12';
+  static const String fullBodyExercises = '3';
   static const String fullBodyMinutes = '48';
 
   static const String flexibilityTitle = 'Flexibility';
-  static const String flexibilityExercises = '8';
+  static const String flexibilityExercises = '3';
   static const String flexibilityMinutes = '32';
 
   static const String exercises = 'exercises';
@@ -163,5 +163,41 @@ class TextConstants {
   static const String balanceStep4 =
       "Lower to the mat and transition into Cobra pose, lifting your chest off the ground while keeping your pelvis grounded.";
   static const String balanceStep5 =
-      "End your practice with Savasana, lying flat on your back and focusing on deep, relaxed breathing.";
+      "End your practice, lying flat on your back and focusing on deep, relaxed breathing.";
+
+//
+  static const String enduranceStep1 =
+      "Set up a comfortable and spacious area for your endurance workout.";
+  static const String enduranceStep2 =
+      "Begin with deep breathing to center yourself and engage your core.";
+  static const String enduranceStep3 =
+      "Move on to exercises that target the abdominal muscles, such as the hundred, single leg stretch, and double leg stretch.";
+  static const String enduranceStep4 =
+      "Pay attention to proper alignment and form throughout each exercise to maximize the benefits and prevent injury.";
+  static const String enduranceStep5 =
+      "Finish the workout with a cool-down period, including gentle stretches for the whole body, focusing on the hamstrings, hips, shoulders, and spine.";
+
+//
+  static const String fullBodyStep1 =
+      "Find a spacious area with enough room to move freely.";
+  static const String fullBodyStep2 =
+      "Begin the movement by bending at your hips and knees, lowering your body as if you're sitting back into an imaginary chair. Keep your chest lifted and your gaze forward.";
+  static const String fullBodyStep3 =
+      "As you squat, focus on keeping your weight in your heels and your knees tracking in line with your toes.";
+  static const String fullBodyStep4 =
+      "Pay attention to your body alignment, keeping your spine neutral and avoiding excessive leaning forward or rounding of the back.";
+  static const String fullBodyStep5 =
+      "Remember to listen to your body and modify the exercise as needed based on your fitness level and any specific limitations or considerations you may have.";
+
+  //
+  static const String flexibilityStep1 =
+      "Stand tall with your feet hip-width apart and your knees slightly bent.";
+  static const String flexibilityStep2 =
+      "Take a step forward with your right foot, keeping your leg straight.";
+  static const String flexibilityStep3 =
+      "Slowly hinge forward at the hips, reaching towards your right foot with both hands. If you cannot reach your foot, aim to touch your shin or the front of your thigh.";
+  static const String flexibilityStep4 =
+      "Allow your head and neck to relax, keeping a gentle gaze towards your toes.";
+  static const String flexibilityStep5 =
+      "Remember to breathe deeply and relax into the stretch without bouncing or forcing the movement.";
 }

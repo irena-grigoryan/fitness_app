@@ -1,5 +1,6 @@
-import 'package:fitness_app/core/services/auth_service.dart';
+// import 'package:fitness_app/core/services/auth_service.dart';
 import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/domain/use_cases/auth/login_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
@@ -7,7 +8,8 @@ import 'package:equatable/equatable.dart';
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
-  LoginCubit() : super(LoginInitialState());
+  LoginUseCase _loginUseCase;
+  LoginCubit(this._loginUseCase) : super(LoginInitialState());
 
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
@@ -18,7 +20,13 @@ class LoginCubit extends Cubit<LoginState> {
     if (_checkValidatorsOfTextField()) {
       emit(LoginLoadingState());
       try {
-        await AuthService.login(emailController.text, passwordController.text);
+        final map = <String, String>{
+          'email': emailController.text,
+          'password': passwordController.text,
+        };
+        await _loginUseCase.call(params: map);
+
+        // await AuthService.login(emailController.text, passwordController.text);
         emit(LoginNextMainScreenState());
       } catch (e) {
         emit(LoginErrorState(message: e.toString()));

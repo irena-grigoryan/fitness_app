@@ -3,6 +3,7 @@ import 'package:fitness_app/core/constants/data_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/home/home_cubit.dart';
 import 'package:fitness_app/presentation/screens/home/widget/home_workout_progress.dart';
 import 'package:fitness_app/presentation/screens/home/widget/home_workout_card.dart';
@@ -31,7 +32,7 @@ class _HomeContentState extends State<HomeContent> {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         if (state is HomeFillDataState) {
-          _fillData();
+          _fillData(state.user, context);
         }
         return Container(
           color: ColorConstants.backgroundColor,
@@ -130,13 +131,16 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   Widget _getProfileData(BuildContext context) {
+    // final User? user = FirebaseAuth.instance.currentUser;
+    // var photoUrl = user?.photoURL;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          final userName =
-              state is HomeFillDataState ? state.userName : 'Dear friend';
-          final photoUrl = state is HomeFillDataState ? state.photoURL : null;
+          // final userName =
+          //     state is HomeFillDataState ? state.userName : 'Dear friend';
+          // final photoUrl = state is HomeFillDataState ? state.photoURL : null;
           return Row(
             children: [
               GestureDetector(
@@ -154,7 +158,7 @@ class _HomeContentState extends State<HomeContent> {
                         child: ClipOval(
                             child: FadeInImage.assetNetwork(
                                 placeholder: PathConstants.profile,
-                                image: photoUrl,
+                                image: photoUrl!,
                                 fit: BoxFit.cover,
                                 width: 200,
                                 height: 120))),
@@ -248,9 +252,15 @@ class _HomeContentState extends State<HomeContent> {
     );
   }
 
-  void _fillData() {
-    final cubit = BlocProvider.of<HomeCubit>(context);
-    userName = cubit.userName;
-    photoUrl = cubit.photoUrl;
+  void _fillData(UserEntity user, BuildContext context) {
+    // final cubit = BlocProvider.of<HomeCubit>(context);
+    // userName = cubit.userName;
+    // photoUrl = cubit.photoUrl;
+    if (user.name != null) {
+      userName = user.name;
+    }
+    if (user.photo != null) {
+      photoUrl = user.photo;
+    }
   }
 }

@@ -59,7 +59,7 @@ class DataConstants {
         exercises: TextConstants.balanceExercises,
         minutes: TextConstants.balanceMinutes,
         currentProgress: 0,
-        progress: 15,
+        progress: 3,
         image: PathConstants.balance,
         workoutDetailsList: [
           WorkoutDetailsData(
@@ -80,12 +80,24 @@ class DataConstants {
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
             progress: 0,
+            steps: [
+              TextConstants.balanceStep1,
+              TextConstants.balanceStep2,
+              TextConstants.balanceStep4,
+              TextConstants.balanceStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
             progress: 0,
+            steps: [
+              TextConstants.balanceStep1,
+              TextConstants.balanceStep2,
+              TextConstants.balanceStep3,
+              TextConstants.balanceStep5,
+            ],
           ),
         ]),
     WorkoutData(
@@ -94,7 +106,7 @@ class DataConstants {
         exercises: TextConstants.enduranceExercises,
         minutes: TextConstants.enduranceMinutes,
         currentProgress: 0,
-        progress: 18,
+        progress: 3,
         image: PathConstants.endurance,
         workoutDetailsList: [
           WorkoutDetailsData(
@@ -102,18 +114,37 @@ class DataConstants {
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
             progress: 0,
+            steps: [
+              TextConstants.enduranceStep1,
+              TextConstants.enduranceStep2,
+              TextConstants.enduranceStep3,
+              TextConstants.enduranceStep4,
+              TextConstants.enduranceStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
             progress: 0,
+            steps: [
+              TextConstants.enduranceStep1,
+              TextConstants.enduranceStep2,
+              TextConstants.enduranceStep3,
+              TextConstants.enduranceStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
             progress: 0,
+            steps: [
+              TextConstants.enduranceStep1,
+              TextConstants.enduranceStep3,
+              TextConstants.enduranceStep4,
+              TextConstants.enduranceStep5,
+            ],
           ),
         ]),
     WorkoutData(
@@ -122,7 +153,7 @@ class DataConstants {
         exercises: TextConstants.fullBodyExercises,
         minutes: TextConstants.fullBodyMinutes,
         currentProgress: 0,
-        progress: 12,
+        progress: 3,
         image: PathConstants.fullBody,
         workoutDetailsList: [
           WorkoutDetailsData(
@@ -130,18 +161,37 @@ class DataConstants {
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
             progress: 0,
+            steps: [
+              TextConstants.fullBodyStep1,
+              TextConstants.fullBodyStep2,
+              TextConstants.fullBodyStep3,
+              TextConstants.fullBodyStep4,
+              TextConstants.fullBodyStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
             progress: 0,
+            steps: [
+              TextConstants.fullBodyStep1,
+              TextConstants.fullBodyStep2,
+              TextConstants.fullBodyStep4,
+              TextConstants.fullBodyStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
             progress: 0,
+            steps: [
+              TextConstants.fullBodyStep1,
+              TextConstants.fullBodyStep3,
+              TextConstants.fullBodyStep4,
+              TextConstants.fullBodyStep5,
+            ],
           ),
         ]),
     WorkoutData(
@@ -150,7 +200,7 @@ class DataConstants {
         exercises: TextConstants.flexibilityExercises,
         minutes: TextConstants.flexibilityMinutes,
         currentProgress: 0,
-        progress: 8,
+        progress: 3,
         image: PathConstants.flexibility,
         workoutDetailsList: [
           WorkoutDetailsData(
@@ -158,18 +208,37 @@ class DataConstants {
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
             progress: 0,
+            steps: [
+              TextConstants.flexibilityStep1,
+              TextConstants.flexibilityStep2,
+              TextConstants.flexibilityStep3,
+              TextConstants.flexibilityStep4,
+              TextConstants.flexibilityStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
             progress: 0,
+            steps: [
+              TextConstants.flexibilityStep1,
+              TextConstants.flexibilityStep2,
+              TextConstants.flexibilityStep4,
+              TextConstants.flexibilityStep5,
+            ],
           ),
           WorkoutDetailsData(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
             progress: 0,
+            steps: [
+              TextConstants.flexibilityStep1,
+              TextConstants.flexibilityStep2,
+              TextConstants.flexibilityStep4,
+              TextConstants.flexibilityStep5,
+            ],
           ),
         ]),
   ];

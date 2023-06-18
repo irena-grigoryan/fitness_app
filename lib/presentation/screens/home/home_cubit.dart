@@ -1,25 +1,33 @@
 import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+// import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fitness_app/core/constants/global_constants.dart';
 import 'package:fitness_app/data/workouts_data.dart';
 import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/domain/entities/user_entity.dart';
+import 'package:fitness_app/domain/use_cases/user/get_user_data_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_state.dart';
 
 class HomeCubit extends Cubit<HomeState> {
-  HomeCubit() : super(HomeInitialState());
+  GetUserDataUseCase _getUserDataUseCase;
+  HomeCubit(this._getUserDataUseCase) : super(HomeInitialState());
 
   String? userName;
   String? photoUrl;
 
-  final User? user = FirebaseAuth.instance.currentUser;
+  var userData;
+
+  // final User? user = FirebaseAuth.instance.currentUser;
 
   getUserData() async {
-    userName = user?.displayName ?? "No Username";
-    photoUrl = user?.photoURL;
+    // userName = user?.displayName ?? "No Username";
+    // photoUrl = user?.photoURL;
+    userData = await _getUserDataUseCase.call();
+    GlobalConstants.currentUser = userData;
 
-    emit(HomeFillDataState(userName: userName, photoURL: photoUrl));
+    emit(HomeFillDataState(user: userData));
   }
 
   List<WorkoutData> workouts = <WorkoutData>[];

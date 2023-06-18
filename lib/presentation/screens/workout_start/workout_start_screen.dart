@@ -16,15 +16,21 @@ class WorkoutStartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final currentExercise = workout!.workoutDetailsList![index!];
-    final nextExercise = index! + 1 < workout!.workoutDetailsList!.length
-        ? workout!.workoutDetailsList![index! + 1]
-        : null;
+    return Scaffold(
+      body: _buildContext(context),
+    );
+  }
+
+  BlocProvider<WorkoutStartCubit> _buildContext(BuildContext context) {
     return BlocProvider<WorkoutStartCubit>(
       create: (context) => di.sl(),
       child: BlocConsumer<WorkoutStartCubit, WorkoutStartState>(
         listener: (context, state) {},
         builder: (context, state) {
+          final currentExercise = workout!.workoutDetailsList![index!];
+          final nextExercise = index! + 1 < workout!.workoutDetailsList!.length
+              ? workout!.workoutDetailsList![index! + 1]
+              : null;
           return WorkoutStartContent(
             workout: workout!,
             exercise: currentExercise,

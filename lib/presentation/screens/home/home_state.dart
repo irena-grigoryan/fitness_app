@@ -9,10 +9,12 @@ class HomeInitialState extends HomeState {
 }
 
 class HomeFillDataState extends HomeState {
-  final String? userName;
-  final String? photoURL;
+  // final String? userName;
+  // final String? photoURL;
+  final UserEntity user;
 
-  HomeFillDataState({required this.userName, required this.photoURL});
+  // HomeFillDataState({required this.userName, required this.photoURL});
+  HomeFillDataState({required this.user});
 
   @override
   List<Object?> get props => [identityHashCode(this)];

@@ -14,7 +14,7 @@ class UserData {
     required this.workouts,
   });
 
-  UserData.fromJson(Map<String, dynamic> json) {
+  UserData.fromJson(dynamic json) {
     name = json['name'];
     photo = json['photo'];
     mail = json['mail'];

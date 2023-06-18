@@ -15,7 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<SettingsCubit>(
-      create: (context) => di.sl(),
+      create: (context) => di.sl()..getUserData(),
       child: BlocConsumer<SettingsCubit, SettingsState>(
         listener: (context, state) {
           if (state is SettingsLogoutState ||

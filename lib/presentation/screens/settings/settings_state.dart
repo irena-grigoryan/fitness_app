@@ -8,6 +8,15 @@ class SettingsInitialState extends SettingsState {
   List<Object?> get props => [identityHashCode(this)];
 }
 
+class SettingsFillDataState extends SettingsState {
+  final UserEntity user;
+
+  SettingsFillDataState(this.user);
+
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}
+
 class SettingsLoadingState extends SettingsState {
   final bool isShow;
 

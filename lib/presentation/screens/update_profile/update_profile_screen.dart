@@ -4,6 +4,7 @@ import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
 import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/update_profile/update_profile_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
 import 'package:fitness_app/presentation/widgets/app_dialogs.dart';
@@ -64,7 +65,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
       child: BlocConsumer<UpdateProfileCubit, UpdateProfileState>(
         builder: (context, state) {
           if (state is UpdateProfileFillDataState) {
-            fillUserData(context);
+            fillUserData(context, state.user);
           }
           if (state is UpdateProfileProgressState) {
             if (state.isShow) {
@@ -229,11 +230,11 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     }
   }
 
-  fillUserData(BuildContext context) {
+  fillUserData(BuildContext context, UserEntity user) {
     // final currentUser = GlobalConstants.currentUser;
     final cubit = BlocProvider.of<UpdateProfileCubit>(context);
-    userName = cubit.userName;
-    userEmail = cubit.userEmail;
+    userName = user.name!;
+    userEmail = user.email!;
     photoUrl = cubit.photoUrl;
     _nameController.text = userName;
     _emailController.text = userEmail;

@@ -6,13 +6,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'workout_steps_state.dart';
 
 class WorkoutStepsCubit extends Cubit<WorkoutStepsState> {
-  WorkoutStepsCubit(WorkoutData workout) : super(WorkoutStepsInitialState());
+  WorkoutStepsCubit() : super(WorkoutStepsInitialState());
+  late WorkoutData? workout;
 
-  late WorkoutData workout;
+  // WorkoutStepsCubit(WorkoutData workout) : super(WorkoutStepsInitialState());
+
+  // late WorkoutData? workout;
 
   getInitialData(currentWorkout) {
     workout = currentWorkout;
-    emit(WorkoutStepsReloadState(workout: workout));
+    emit(WorkoutStepsReloadState(workout: workout!));
   }
 
   onStartTap(

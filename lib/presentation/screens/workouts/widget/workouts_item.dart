@@ -13,8 +13,8 @@ class WorkoutsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<WorkoutsCubit>(context);
-    final progressPercentage =
-        (workoutData.currentProgress! / workoutData.progress!) * 100;
+    // final progressPercentage =
+    //     (workoutData.currentProgress! / workoutData.progress!) * 100;
     return Container(
       width: double.infinity,
       height: 140,
@@ -88,7 +88,8 @@ class WorkoutsItem extends StatelessWidget {
                         backgroundColor: ColorConstants.grey.withOpacity(0.12),
                         radius: 36,
                         lineWidth: 5.5,
-                        center: Text('${progressPercentage.toInt()}%'),
+                        center: Text(
+                            '${((workoutData.currentProgress! / workoutData.progress!) * 100).toInt()}%'),
                       ),
                     )
                   ],

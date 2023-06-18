@@ -9,6 +9,9 @@ class UpdateProfileInitialState extends UpdateProfileState {
 }
 
 class UpdateProfileFillDataState extends UpdateProfileState {
+  final UserEntity user;
+
+  UpdateProfileFillDataState(this.user);
   @override
   List<Object?> get props => [identityHashCode(this)];
 }

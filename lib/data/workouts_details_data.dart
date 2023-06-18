@@ -6,7 +6,6 @@ class WorkoutDetailsData {
   int? minutes;
   double? progress;
   String? video;
-  String? description;
   List<String>? steps;
 
   WorkoutDetailsData({
@@ -15,7 +14,6 @@ class WorkoutDetailsData {
     this.minutes,
     this.progress,
     this.video,
-    this.description,
     this.steps,
   });
 
@@ -25,7 +23,6 @@ class WorkoutDetailsData {
     minutes = json['minutes'];
     progress = json['progress'];
     video = json['video'];
-    description = json['description'];
     steps = json['steps'].cast<String>();
   }
 
@@ -36,7 +33,6 @@ class WorkoutDetailsData {
     data['minutes'] = this.minutes;
     data['progress'] = this.progress;
     data['video'] = this.video;
-    data['description'] = this.description;
     data['steps'] = this.steps;
     return data;
   }

@@ -1,4 +1,5 @@
 import 'package:fitness_app/presentation/screens/workout_start/widget/workout_video_player.dart';
+import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
@@ -54,14 +55,15 @@ class WorkoutStartContent extends StatelessWidget {
         children: [
           _getSwipe(),
           const SizedBox(height: 8),
-          Expanded(
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.45,
             child: ListView(children: [
-              const SizedBox(height: 9),
+              const SizedBox(height: 5),
               _getExercisesSteps(),
             ]),
           ),
-          // const SizedBox(height: 18),
-          // _getButton(context),
+          // const SizedBox(height: 10),
+          _getButton(context),
         ],
       ),
     );
@@ -129,7 +131,9 @@ class WorkoutStartContent extends StatelessWidget {
           ),
         ],
       ),
-      child: WorkoutVideoPlayer(),
+      child:
+          //  Container()
+          WorkoutVideoPlayer(),
     );
   }
 
@@ -151,11 +155,41 @@ class WorkoutStartContent extends StatelessWidget {
 
   Widget _getButton(BuildContext context) {
     return AppButton(
+      // title: nextExercise != null ? TextConstants.next : TextConstants.finish,
       title: nextExercise != null ? 'Next' : 'Finish',
-      onTap: () {
-        // action
+      onTap: () async {
+        final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
+        if (nextExercise != null) {
+          List<WorkoutDetailsData>? exercisesList =
+              cubit.workout!.workoutDetailsList;
+          int currentExerciseIndex = exercisesList!.indexOf(exercise);
+
+          await _saveWorkout(currentExerciseIndex, context);
+
+          if (currentExerciseIndex < exercisesList.length - 1) {
+            cubit.onStartTap(
+              currentWorkout: workout,
+              currentIndex: currentExerciseIndex + 1,
+              currentIsReplace: true,
+            );
+          }
+        } else {
+          await _saveWorkout(workout.workoutDetailsList!.length - 1, context);
+
+          Navigator.pop(context, workout);
+        }
       },
     );
+  }
+
+  Future<void> _saveWorkout(int exerciseIndex, BuildContext context) async {
+    final cubit = BlocProvider.of<WorkoutStartCubit>(context);
+    if (workout.currentProgress! < exerciseIndex + 1) {
+      workout.currentProgress = exerciseIndex + 1;
+    }
+    workout.workoutDetailsList![exerciseIndex].progress = 1;
+
+    await cubit.saveWorkout(workout);
   }
 }
 
