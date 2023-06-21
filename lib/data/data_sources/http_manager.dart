@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'dart:async';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/core/extensions/app_exceptions.dart';
 import 'package:fitness_app/api.dart' as api;
 import 'package:http/http.dart' as http;
 
@@ -48,24 +46,31 @@ class HttpManagerImpl implements HttpManager {
       if (response.statusCode == 200 || response.statusCode == 201) {
         return json.decode(response.body);
       }
-    } on FirebaseAuthException catch (e) {
-      throw AppFirebaseException(getExceptionMessage(e));
+      if (response.statusCode == 400) {
+        final resp = json.decode(response.body);
+        var error = resp['error']['message'] ?? 'Error';
+        throw getExceptionMessage(error);
+      }
     } catch (e) {
-      throw Exception(e);
+      throw (e);
     }
   }
 
-  String getExceptionMessage(FirebaseAuthException e) {
-    print(e.code);
-    switch (e.code) {
-      case 'user-not-found':
+  String getExceptionMessage(e) {
+    print(e);
+    switch (e) {
+      case 'EMAIL_NOT_FOUND':
         return 'User not found';
-      case 'wrong-password':
+      case 'INVALID_EMAIL':
+        return 'Enter a valid email';
+      case 'INVALID_PASSWORD':
         return 'Password is incorrect';
-      case 'requires-recent-login':
+      case 'EMAIL_EXISTS':
+        return 'Email is already registered';
+      case 'INVALID_ID_TOKEN':
         return 'Log in again before retrying this request';
       default:
-        return e.message ?? 'Error';
+        return e ?? 'Error';
     }
   }
 }

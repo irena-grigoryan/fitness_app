@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:fitness_app/core/constants/global_constants.dart';
 import 'package:fitness_app/core/extensions/app_exceptions.dart';
-import 'package:fitness_app/core/services/user_storage_service.dart';
 import 'package:fitness_app/data/user_data.dart';
 
 class AuthService {
@@ -15,7 +14,7 @@ class AuthService {
     await user.updateDisplayName(name);
 
     final userData = UserData.fromFirebase(auth.currentUser);
-    await UserStorageService.createData(email, userData.toString());
+    // await UserStorageService.createData(email, userData.toString());
     GlobalConstants.currentUser = userData;
 
     return user;
@@ -53,12 +52,12 @@ class AuthService {
       if (user == null) {
         throw Exception("User not found");
       } else {
-        final userFromLocal = await UserStorageService.getData(email);
-        final userData = UserData.fromFirebase(auth.currentUser);
-        if (userFromLocal == null) {
-          await UserStorageService.createData(email, userData.toString());
-        }
-        GlobalConstants.currentUser = userData;
+        // final userFromLocal = await UserStorageService.getData(email);
+        // final userData = UserData.fromFirebase(auth.currentUser);
+        // if (userFromLocal == null) {
+        // await UserStorageService.createData(email, userData.toString());
+        // }
+        // GlobalConstants.currentUser = userData;
       }
 
       return user;

@@ -9,7 +9,7 @@ class WorkoutsInitialState extends WorkoutsState {
 }
 
 class WorkoutsOnSelectState extends WorkoutsState {
-  final WorkoutData workout;
+  final Workout workout;
 
   WorkoutsOnSelectState({required this.workout});
 
@@ -18,7 +18,7 @@ class WorkoutsOnSelectState extends WorkoutsState {
 }
 
 class WorkoutsReloadState extends WorkoutsState {
-  final List<WorkoutData> workouts;
+  final List<Workout> workouts;
 
   WorkoutsReloadState({
     required this.workouts,

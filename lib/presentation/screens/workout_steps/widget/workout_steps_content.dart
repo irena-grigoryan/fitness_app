@@ -1,13 +1,13 @@
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/widget/exercises_list.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/widget/workout_steps_info.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutStepsContent extends StatelessWidget {
-  final WorkoutData workout;
+  final Workout workout;
 
   const WorkoutStepsContent({required this.workout});
 

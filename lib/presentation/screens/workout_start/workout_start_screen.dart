@@ -1,4 +1,4 @@
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_start/widget/workout_start_content.dart';
 import 'package:fitness_app/presentation/screens/workout_start/workout_start_cubit.dart';
 import 'package:flutter/material.dart';
@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
 
 class WorkoutStartScreen extends StatelessWidget {
-  final WorkoutData? workout;
+  final Workout? workout;
   final int? index;
 
   WorkoutStartScreen({

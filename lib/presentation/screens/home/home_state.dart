@@ -9,11 +9,8 @@ class HomeInitialState extends HomeState {
 }
 
 class HomeFillDataState extends HomeState {
-  // final String? userName;
-  // final String? photoURL;
   final UserEntity user;
 
-  // HomeFillDataState({required this.userName, required this.photoURL});
   HomeFillDataState({required this.user});
 
   @override
@@ -43,12 +40,17 @@ class HomeGetUserNameState extends HomeState {
 }
 
 class HomeGetWorkoutsState extends HomeState {
-  final List<WorkoutData> workouts;
+  final List<Workout> workouts;
 
   HomeGetWorkoutsState({
     required this.workouts,
   });
 
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}
+
+class HomeErrorFillDataState extends HomeState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }

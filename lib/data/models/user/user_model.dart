@@ -1,4 +1,4 @@
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 
 class UserModel {
   UserModel({
@@ -32,7 +32,7 @@ class User {
   String? email;
   String? name;
   String? photo;
-  List<WorkoutData>? workouts;
+  List<Workout>? workouts;
 
   User.fromJson(json) {
     Map<String, dynamic> userMap = json[0];

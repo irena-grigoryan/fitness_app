@@ -1,53 +1,29 @@
-import 'dart:convert';
-
-import 'package:fitness_app/core/constants/global_constants.dart';
-import 'package:fitness_app/core/services/user_storage_service.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 abstract class WorkoutsLocalDataSource {
-  Future<List<WorkoutData>> getWorkoutsForUser();
-  Future saveWorkout(WorkoutData workout);
-  Future clearData();
+  Future deleteData(String key);
+  Future getData(String key);
+  Future createData(String key, String value);
 }
 
 class WorkoutsLocalDataSourceImpl implements WorkoutsLocalDataSource {
+  final _storage = FlutterSecureStorage();
+
   @override
-  Future<List<WorkoutData>> getWorkoutsForUser() async {
-    final currentUserEmail = GlobalConstants.currentUser.email;
-    final workoutsStr =
-        await UserStorageService.getData('${currentUserEmail}Workouts');
-    if (workoutsStr == null) return [];
-    final decoded = (json.decode(workoutsStr) as List?) ?? [];
-    final workouts = decoded.map((e) {
-      final decodedE = json.decode(e) as Map<String, dynamic>?;
-      return WorkoutData.fromJson(decodedE!);
-    }).toList();
-    GlobalConstants.workouts = workouts;
-    return workouts;
+  Future createData(String key, String value) async {
+    var createData = await _storage.write(key: key, value: value);
+    return createData;
   }
 
   @override
-  Future saveWorkout(WorkoutData workout) async {
-    final allWorkouts = await getWorkoutsForUser();
-    final index = allWorkouts.indexWhere((w) => w.id == workout.id);
-    if (index != -1) {
-      allWorkouts[index] = workout;
-    } else {
-      allWorkouts.add(workout);
-    }
-    GlobalConstants.workouts = allWorkouts;
-    final workoutsStr = allWorkouts.map((e) => e.toJsonString()).toList();
-    final encoded = json.encode(workoutsStr);
-    final currentUserEmail = GlobalConstants.currentUser.email;
-    await UserStorageService.createData(
-      '${currentUserEmail}Workouts',
-      encoded,
-    );
+  Future getData(String key) async {
+    var getData = await _storage.read(key: key);
+    return getData;
   }
 
   @override
-  Future clearData() async {
-    final currentUserEmail = GlobalConstants.currentUser.email;
-    await UserStorageService.deleteData('${currentUserEmail}Workouts');
+  Future deleteData(String key) async {
+    var deleteData = await _storage.delete(key: key);
+    return deleteData;
   }
 }

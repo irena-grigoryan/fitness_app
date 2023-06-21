@@ -1,10 +1,10 @@
 import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:flutter/material.dart';
 
 class WorkoutCard extends StatelessWidget {
   final Color color;
-  final WorkoutData workout;
+  final Workout workout;
   final VoidCallback onTap;
 
   const WorkoutCard({

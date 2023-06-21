@@ -1,20 +1,18 @@
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workouts/workouts_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
 class WorkoutsItem extends StatelessWidget {
-  final WorkoutData workoutData;
+  final Workout workoutData;
   const WorkoutsItem({Key? key, required this.workoutData}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final cubit = BlocProvider.of<WorkoutsCubit>(context);
-    // final progressPercentage =
-    //     (workoutData.currentProgress! / workoutData.progress!) * 100;
     return Container(
       width: double.infinity,
       height: 140,

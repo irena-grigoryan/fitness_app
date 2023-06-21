@@ -1,7 +1,8 @@
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 
 abstract class WorkoutsRepository {
-  Future<List<WorkoutData>> getWorkoutsForUser();
-  Future saveWorkout(WorkoutData workout);
+  Future<List<Workout>> getWorkoutsForUser();
+
+  Future saveWorkout(Workout workout);
   Future clearData();
 }

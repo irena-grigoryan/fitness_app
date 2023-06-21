@@ -96,6 +96,16 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   });
             });
           }
+          if (state is UpdateProfileErrorFillDataState) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Dialogs.showInformDialog(
+                  context: context,
+                  content: 'Please login again',
+                  onPressed: () {
+                    Navigator.of(context).pushReplacementNamed('/login');
+                  });
+            });
+          }
           return _getMainContent(context);
         },
         listener: (context, state) {},
@@ -231,7 +241,6 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
   }
 
   fillUserData(BuildContext context, UserEntity user) {
-    // final currentUser = GlobalConstants.currentUser;
     final cubit = BlocProvider.of<UpdateProfileCubit>(context);
     userName = user.name!;
     userEmail = user.email!;

@@ -9,7 +9,7 @@ class WorkoutStepsInitialState extends WorkoutStepsState {
 }
 
 class WorkoutItemTappedState extends WorkoutStepsState {
-  final WorkoutData workout;
+  final Workout workout;
   final int index;
 
   WorkoutItemTappedState({
@@ -22,7 +22,7 @@ class WorkoutItemTappedState extends WorkoutStepsState {
 }
 
 class WorkoutStepsReloadState extends WorkoutStepsState {
-  final WorkoutData workout;
+  final Workout workout;
 
   WorkoutStepsReloadState({
     required this.workout,
@@ -33,7 +33,7 @@ class WorkoutStepsReloadState extends WorkoutStepsState {
 }
 
 class WorkoutStepsStartState extends WorkoutStepsState {
-  final WorkoutData? workout;
+  final Workout? workout;
   final int? index;
   final bool? isReplace;
 

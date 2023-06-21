@@ -1,4 +1,4 @@
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_start/workout_start_screen.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/widget/workout_steps_content.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
@@ -20,7 +20,7 @@ class WorkoutStepsScreen extends StatefulWidget {
 }
 
 class _WorkoutStepsScreenState extends State<WorkoutStepsScreen> {
-  WorkoutData? workout;
+  Workout? workout;
   @override
   Widget build(BuildContext context) {
     return _buildContext(context);
@@ -29,7 +29,7 @@ class _WorkoutStepsScreenState extends State<WorkoutStepsScreen> {
   @override
   void didChangeDependencies() {
     final args =
-        ModalRoute.of(context)!.settings.arguments as Map<String, WorkoutData>;
+        ModalRoute.of(context)!.settings.arguments as Map<String, Workout>;
     workout = args['workout'];
     super.didChangeDependencies();
   }
@@ -64,9 +64,7 @@ class _WorkoutStepsScreenState extends State<WorkoutStepsScreen> {
 
           if (state is WorkoutStepsStartState) {
             final workout = state.isReplace!
-                ?
-                // await onSelect(context, state.workout!, state.index!)
-                Navigator.of(context, rootNavigator: true).pushReplacement(
+                ? Navigator.of(context, rootNavigator: true).pushReplacement(
                     MaterialPageRoute(
                       builder: (_) => BlocProvider.value(
                         value: BlocProvider.of<WorkoutStepsCubit>(context),
@@ -88,7 +86,7 @@ class _WorkoutStepsScreenState extends State<WorkoutStepsScreen> {
                       ),
                     ),
                   );
-            if (workout is WorkoutData) {
+            if (workout is Workout) {
               cubit.getInitialData(workout);
             }
           }
@@ -96,14 +94,4 @@ class _WorkoutStepsScreenState extends State<WorkoutStepsScreen> {
       ),
     );
   }
-
-  // onSelect(BuildContext context, WorkoutData workout, int index) {
-  //   Navigator.of(context).pushNamed(
-  //     WorkoutStepsScreen.routeName,
-  //     arguments: {
-  //       'workout': workout,
-  //       'index': index,
-  //     },
-  //   );
-  // }
 }

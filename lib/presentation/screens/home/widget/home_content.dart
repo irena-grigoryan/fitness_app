@@ -2,17 +2,18 @@ import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/data_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
 import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/home/home_cubit.dart';
 import 'package:fitness_app/presentation/screens/home/widget/home_workout_progress.dart';
 import 'package:fitness_app/presentation/screens/home/widget/home_workout_card.dart';
 import 'package:fitness_app/presentation/screens/main/main_cubit.dart';
+import 'package:fitness_app/presentation/widgets/app_dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomeContent extends StatefulWidget {
-  final List<WorkoutData> workouts;
+  final List<Workout> workouts;
 
   HomeContent({
     required this.workouts,
@@ -33,6 +34,15 @@ class _HomeContentState extends State<HomeContent> {
       builder: (context, state) {
         if (state is HomeFillDataState) {
           _fillData(state.user, context);
+        } else if (state is HomeErrorFillDataState) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Dialogs.showInformDialog(
+                context: context,
+                content: 'Please login again',
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/login');
+                });
+          });
         }
         return Container(
           color: ColorConstants.backgroundColor,

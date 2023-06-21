@@ -36,6 +36,16 @@ class _SettingsContentState extends State<SettingsContent> {
         if (state is SettingsFillDataState) {
           _fillData(state.user, context);
         }
+        if (state is SettingsErrorFillDataState) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Dialogs.showInformDialog(
+                context: context,
+                content: 'Please login again',
+                onPressed: () {
+                  Navigator.of(context).pushReplacementNamed('/login');
+                });
+          });
+        }
         // else {
         //   return const SizedBox();
         // }
@@ -51,10 +61,6 @@ class _SettingsContentState extends State<SettingsContent> {
   }
 
   Widget _getSettingsBody(BuildContext context) {
-    // final User? user = FirebaseAuth.instance.currentUser;
-    // String? displayName = user?.displayName ?? 'No Username';
-    // String? email = user?.email ?? 'No email';
-    // var photoUrl = user?.photoURL;
     final cubit = BlocProvider.of<SettingsCubit>(context);
     return SafeArea(
       child: SingleChildScrollView(

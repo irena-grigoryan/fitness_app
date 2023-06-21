@@ -47,4 +47,32 @@ class PathConstants {
   static const String training = 'assets/icons/workout_steps/ic_training.png';
 
   static const String swipe = 'assets/icons/workout_steps/ic_swipe.png';
+
+  static const String balanceVideo1 =
+      'https://media.publit.io/file/balance/balance-1.mp4';
+  static const String balanceVideo2 =
+      'https://media.publit.io/file/balance/balance-2.mp4';
+  static const String balanceVideo3 =
+      'https://media.publit.io/file/balance/balance-3.mp4';
+
+  static const String enduranceVideo1 =
+      'https://media.publit.io/file/endurance/endurance-1.mp4';
+  static const String enduranceVideo2 =
+      'https://media.publit.io/file/endurance/endurance-2.mp4';
+  static const String enduranceVideo3 =
+      'https://media.publit.io/file/endurance/endurance-3.mp4';
+
+  static const String fullBodyVideo1 =
+      'https://media.publit.io/file/fullBody/fullBody-1.mp4';
+  static const String fullBodyVideo2 =
+      'https://media.publit.io/file/fullBody/fullBody-2.mp4';
+  static const String fullBodyVideo3 =
+      'https://media.publit.io/file/fullBody/fullBody-3.mp4';
+
+  static const String flexibilityVideo1 =
+      'https://media.publit.io/file/flexibility/flexibility-1.mp4';
+  static const String flexibilityVideo2 =
+      'https://media.publit.io/file/flexibility/flexibility-2.mp4';
+  static const String flexibilityVideo3 =
+      'https://media.publit.io/file/flexibility/flexibility-3.mp4';
 }

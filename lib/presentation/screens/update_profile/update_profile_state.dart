@@ -45,3 +45,8 @@ class UpdateProfileSuccessState extends UpdateProfileState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }
+
+class UpdateProfileErrorFillDataState extends UpdateProfileState {
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}

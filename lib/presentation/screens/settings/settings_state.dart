@@ -34,3 +34,8 @@ class SettingsDeactivateAccountState extends SettingsState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }
+
+class SettingsErrorFillDataState extends SettingsState {
+  @override
+  List<Object?> get props => [identityHashCode(this)];
+}

@@ -1,9 +1,9 @@
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_start/widget/workout_video_player.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
 import 'package:fitness_app/data/workouts_details_data.dart';
 import 'package:fitness_app/presentation/screens/workout_start/workout_start_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
@@ -11,7 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class WorkoutStartContent extends StatelessWidget {
-  final WorkoutData workout;
+  final Workout workout;
   final WorkoutDetailsData exercise;
   final WorkoutDetailsData? nextExercise;
 
@@ -54,7 +54,7 @@ class WorkoutStartContent extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _getSwipe(),
-          const SizedBox(height: 8),
+          const SizedBox(height: 15),
           SizedBox(
             height: MediaQuery.of(context).size.height * 0.45,
             child: ListView(children: [
@@ -62,7 +62,6 @@ class WorkoutStartContent extends StatelessWidget {
               _getExercisesSteps(),
             ]),
           ),
-          // const SizedBox(height: 10),
           _getButton(context),
         ],
       ),
@@ -119,7 +118,7 @@ class WorkoutStartContent extends StatelessWidget {
   Widget _getVideo(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 250,
+      height: 246,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(24),
         color: ColorConstants.white,
@@ -131,9 +130,7 @@ class WorkoutStartContent extends StatelessWidget {
           ),
         ],
       ),
-      child:
-          //  Container()
-          WorkoutVideoPlayer(),
+      child: WorkoutVideoPlayer(exercise),
     );
   }
 
@@ -155,7 +152,6 @@ class WorkoutStartContent extends StatelessWidget {
 
   Widget _getButton(BuildContext context) {
     return AppButton(
-      // title: nextExercise != null ? TextConstants.next : TextConstants.finish,
       title: nextExercise != null ? 'Next' : 'Finish',
       onTap: () async {
         final cubit = BlocProvider.of<WorkoutStepsCubit>(context);

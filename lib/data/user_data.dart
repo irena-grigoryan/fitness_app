@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 
 class UserData {
   String? name;
   String? photo;
   String? mail;
-  List<WorkoutData>? workouts;
+  List<Workout>? workouts;
 
   UserData({
     required this.name,
@@ -19,9 +19,9 @@ class UserData {
     photo = json['photo'];
     mail = json['mail'];
     if (json['workouts'] != null) {
-      List<WorkoutData> workouts = [];
+      List<Workout> workouts = [];
       json['workouts'].forEach((v) {
-        workouts.add(new WorkoutData.fromJson(v));
+        workouts.add(new Workout.fromJson(v));
       });
     }
   }

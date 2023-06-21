@@ -1,6 +1,6 @@
 import 'package:fitness_app/core/constants/color_constants.dart';
 import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/data/workouts_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/data/workouts_details_data.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ExercisesList extends StatelessWidget {
-  final WorkoutData workout;
+  final Workout workout;
   final List<WorkoutDetailsData> exercises;
 
   const ExercisesList({required this.exercises, required this.workout});
@@ -35,7 +35,7 @@ class ExercisesList extends StatelessWidget {
 }
 
 class ExerciseItem extends StatelessWidget {
-  final WorkoutData workout;
+  final Workout workout;
   final WorkoutDetailsData currentExercise;
   final WorkoutDetailsData? nextExercise;
   final int index;
@@ -49,13 +49,13 @@ class ExerciseItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
+    final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
     return BlocBuilder<WorkoutStepsCubit, WorkoutStepsState>(
       builder: (context, state) {
         return InkWell(
           borderRadius: BorderRadius.circular(40),
           onTap: () {
-            // cubit.onStartTap(currentWorkout: workout, currentIndex: index);
+            cubit.onStartTap(currentWorkout: workout, currentIndex: index);
           },
           child: Container(
             width: double.infinity,
