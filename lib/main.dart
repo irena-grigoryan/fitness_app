@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:fitness_app/core/services/notification_service.dart';
+import 'package:fitness_app/data/services/notification_service.dart';
 import 'package:fitness_app/presentation/screens/introduction/introduction_screen.dart';
 import 'package:fitness_app/presentation/screens/login/login_screen.dart';
 import 'package:fitness_app/presentation/screens/main/main_screen.dart';
@@ -10,14 +10,11 @@ import 'package:fitness_app/presentation/screens/reset_password/reset_password_s
 import 'package:fitness_app/presentation/screens/update_password/update_password_screen.dart';
 import 'package:fitness_app/presentation/screens/update_profile/update_profile_screen.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_screen.dart';
-// import 'package:fitness_app/data/models/user/user_model.dart' as user;
 import 'package:flutter/material.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
-
-// import 'core/constants/global_constants.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -62,9 +59,6 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     final currentUser = FirebaseAuth.instance.currentUser;
     final isLoggedIn = currentUser != null;
-    // if (isLoggedIn) {
-    //   GlobalConstants.currentUser = user.User.fromFirebase(currentUser);
-    // }
     return MaterialApp(
       title: 'Fitness App',
       debugShowCheckedModeBanner: false,
@@ -73,7 +67,6 @@ class _MyAppState extends State<MyApp> {
       ),
       initialRoute: '/',
       routes: {
-        // '/': (context) => const RegistrationScreen(),
         '/': isLoggedIn
             ? (context) => const MainScreen()
             : (context) => const IntroductionScreen(),

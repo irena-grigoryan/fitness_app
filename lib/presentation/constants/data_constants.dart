@@ -1,7 +1,7 @@
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 
 import 'package:fitness_app/presentation/screens/introduction/widget/introduction_content.dart';
 
@@ -62,7 +62,7 @@ class DataConstants {
         progress: 3,
         image: PathConstants.balance,
         workoutDetailsList: [
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise1',
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
@@ -76,7 +76,7 @@ class DataConstants {
               TextConstants.balanceStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
@@ -89,7 +89,7 @@ class DataConstants {
               TextConstants.balanceStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
@@ -112,7 +112,7 @@ class DataConstants {
         progress: 3,
         image: PathConstants.endurance,
         workoutDetailsList: [
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise1',
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
@@ -126,7 +126,7 @@ class DataConstants {
               TextConstants.enduranceStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
@@ -139,7 +139,7 @@ class DataConstants {
               TextConstants.enduranceStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
@@ -162,7 +162,7 @@ class DataConstants {
         progress: 3,
         image: PathConstants.fullBody,
         workoutDetailsList: [
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise1',
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
@@ -176,7 +176,7 @@ class DataConstants {
               TextConstants.fullBodyStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
@@ -189,7 +189,7 @@ class DataConstants {
               TextConstants.fullBodyStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,
@@ -212,7 +212,7 @@ class DataConstants {
         progress: 3,
         image: PathConstants.flexibility,
         workoutDetailsList: [
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise1',
             title: TextConstants.exercise1,
             minutes: TextConstants.exercise1Minutes,
@@ -226,7 +226,7 @@ class DataConstants {
               TextConstants.flexibilityStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise2',
             title: TextConstants.exercise2,
             minutes: TextConstants.exercise2Minutes,
@@ -239,7 +239,7 @@ class DataConstants {
               TextConstants.flexibilityStep5,
             ],
           ),
-          WorkoutDetailsData(
+          WorkoutDetailsModel(
             id: 'exercise3',
             title: TextConstants.exercise3,
             minutes: TextConstants.exercise3Minutes,

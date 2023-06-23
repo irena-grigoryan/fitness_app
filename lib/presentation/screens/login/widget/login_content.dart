@@ -1,7 +1,7 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
+import 'package:fitness_app/data/services/validation_service.dart';
 import 'package:fitness_app/presentation/screens/login/login_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
 import 'package:fitness_app/presentation/widgets/app_loading.dart';

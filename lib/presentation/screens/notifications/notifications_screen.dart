@@ -1,5 +1,5 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/presentation/screens/notifications/notifications_cubit.dart';
 import 'package:fitness_app/presentation/screens/notifications/widget/notifications_content.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';

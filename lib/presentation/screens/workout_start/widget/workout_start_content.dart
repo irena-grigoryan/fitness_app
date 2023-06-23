@@ -2,9 +2,9 @@ import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_start/widget/workout_video_player.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 import 'package:fitness_app/presentation/screens/workout_start/workout_start_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -12,8 +12,8 @@ import 'package:sliding_up_panel/sliding_up_panel.dart';
 
 class WorkoutStartContent extends StatelessWidget {
   final Workout workout;
-  final WorkoutDetailsData exercise;
-  final WorkoutDetailsData? nextExercise;
+  final WorkoutDetailsModel exercise;
+  final WorkoutDetailsModel? nextExercise;
 
   WorkoutStartContent({
     required this.workout,
@@ -156,7 +156,7 @@ class WorkoutStartContent extends StatelessWidget {
       onTap: () async {
         final cubit = BlocProvider.of<WorkoutStepsCubit>(context);
         if (nextExercise != null) {
-          List<WorkoutDetailsData>? exercisesList =
+          List<WorkoutDetailsModel>? exercisesList =
               cubit.workout!.workoutDetailsList;
           int currentExerciseIndex = exercisesList!.indexOf(exercise);
 

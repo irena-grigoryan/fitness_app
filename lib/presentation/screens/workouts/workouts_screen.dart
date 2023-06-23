@@ -17,19 +17,20 @@ class _WorkoutsScreenState extends State<WorkoutsScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<WorkoutsCubit>(
-      create: (context) => di.sl()..workoutsInitialEvent(),
+      create: (context) => di.sl()..getWorkouts(),
       child: BlocConsumer<WorkoutsCubit, WorkoutsState>(
         listener: (context, state) {
           final cubit = BlocProvider.of<WorkoutsCubit>(context);
           if (state is WorkoutsOnSelectState) {
+            cubit.getWorkouts();
             onSelect(context, state.workout);
-            cubit.workoutsInitialEvent();
           }
         },
+        buildWhen: (context, currState) => currState is WorkoutsReloadState,
         builder: (context, state) {
           final cubit = BlocProvider.of<WorkoutsCubit>(context);
-          cubit.workoutsInitialEvent();
-          return const WorkoutsContent();
+          cubit.getWorkouts();
+          return WorkoutsContent();
         },
       ),
     );

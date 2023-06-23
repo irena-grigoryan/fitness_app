@@ -1,13 +1,13 @@
 import 'package:chewie/chewie.dart';
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 
 class WorkoutVideoPlayer extends StatefulWidget {
-  final WorkoutDetailsData exercise;
+  final WorkoutDetailsModel exercise;
   WorkoutVideoPlayer(this.exercise);
   @override
   _WorkoutVideoPlayerState createState() => _WorkoutVideoPlayerState();
@@ -23,7 +23,7 @@ class _WorkoutVideoPlayerState extends State<WorkoutVideoPlayer> {
     _chewieController = ChewieController(
         videoPlayerController: _controller,
         autoInitialize: true,
-        aspectRatio: 14 / 10,
+        aspectRatio: 15 / 10,
         looping: true,
         autoPlay: false,
         placeholder: Center(child: CupertinoActivityIndicator()),

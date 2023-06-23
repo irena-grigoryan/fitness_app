@@ -1,6 +1,6 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/presentation/screens/home/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

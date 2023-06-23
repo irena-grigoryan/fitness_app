@@ -86,7 +86,7 @@ Future<void> init() async {
   sl.registerFactory(() => HomeCubit(sl(), sl()));
   sl.registerFactory(() => SettingsCubit(sl(), sl(), sl()));
   sl.registerFactory(() => UpdateProfileCubit(sl(), sl(), sl(), sl()));
-  sl.registerFactory(() => UpdatePasswordCubit(sl()));
+  sl.registerFactory(() => UpdatePasswordCubit(sl(), sl()));
   sl.registerFactory(() => NotificationsCubit());
   sl.registerFactory(() => WorkoutStepsCubit());
   sl.registerFactory(() => WorkoutStartCubit(sl()));

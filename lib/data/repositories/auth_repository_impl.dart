@@ -1,4 +1,5 @@
-import 'package:fitness_app/core/constants/global_constants.dart';
+import 'package:fitness_app/presentation/constants/global_constants.dart';
+import 'package:fitness_app/data/services/firebase_service.dart';
 import 'package:fitness_app/data/data_sources/auth_remote_data_source.dart';
 import 'package:fitness_app/data/data_sources/user_local_data_source.dart';
 import 'package:fitness_app/data/data_sources/workouts_local_data_source.dart';
@@ -43,8 +44,9 @@ class AuthRepositoryImpl implements AuthRepository {
         final currentUserEmail = GlobalConstants.currentUser.email;
         return {
           local.clearData(),
-          workoutsLocalDataSource.deleteData('${currentUserEmail}Workouts')
-          // .then((_) => AuthService.logOut()),
+          workoutsLocalDataSource
+              .deleteData('${currentUserEmail}Workouts')
+              .then((_) => FirebaseService.logOut()),
         };
       });
 

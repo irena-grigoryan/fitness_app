@@ -1,6 +1,5 @@
 import 'dart:convert';
-
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 
 class WorkoutModel {
   WorkoutModel({
@@ -41,7 +40,7 @@ class Workout {
   int? currentProgress;
   int? progress;
   String? image;
-  List<WorkoutDetailsData>? workoutDetailsList;
+  List<WorkoutDetailsModel>? workoutDetailsList;
 
   Workout.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -52,9 +51,9 @@ class Workout {
     progress = json['progress'];
     image = json['image'];
     if (json['exerciseDataList'] != null) {
-      List<WorkoutDetailsData> exercises = [];
+      List<WorkoutDetailsModel> exercises = [];
       json['exerciseDataList'].forEach((v) {
-        exercises.add(WorkoutDetailsData.fromJson(v));
+        exercises.add(WorkoutDetailsModel.fromJson(v));
       });
       workoutDetailsList = exercises;
     }

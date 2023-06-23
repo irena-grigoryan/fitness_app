@@ -1,6 +1,6 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/widget/exercises_list.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/widget/workout_steps_info.dart';

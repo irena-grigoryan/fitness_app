@@ -9,6 +9,8 @@ class UpdatePasswordInitialState extends UpdatePasswordState {
 }
 
 class UpdatePasswordFillDataState extends UpdatePasswordState {
+  final UserEntity user;
+  UpdatePasswordFillDataState(this.user);
   @override
   List<Object?> get props => [identityHashCode(this)];
 }

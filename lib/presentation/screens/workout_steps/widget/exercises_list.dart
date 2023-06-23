@@ -1,7 +1,7 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,7 +9,7 @@ import 'package:percent_indicator/circular_percent_indicator.dart';
 
 class ExercisesList extends StatelessWidget {
   final Workout workout;
-  final List<WorkoutDetailsData> exercises;
+  final List<WorkoutDetailsModel> exercises;
 
   const ExercisesList({required this.exercises, required this.workout});
 
@@ -36,8 +36,8 @@ class ExercisesList extends StatelessWidget {
 
 class ExerciseItem extends StatelessWidget {
   final Workout workout;
-  final WorkoutDetailsData currentExercise;
-  final WorkoutDetailsData? nextExercise;
+  final WorkoutDetailsModel currentExercise;
+  final WorkoutDetailsModel? nextExercise;
   final int index;
 
   const ExerciseItem({

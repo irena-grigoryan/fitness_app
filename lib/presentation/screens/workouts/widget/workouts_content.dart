@@ -1,10 +1,9 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/data_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/presentation/screens/workouts/widget/workouts_item.dart';
 import 'package:fitness_app/presentation/screens/workouts/workouts_cubit.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class WorkoutsContent extends StatelessWidget {
@@ -16,13 +15,23 @@ class WorkoutsContent extends StatelessWidget {
       color: ColorConstants.backgroundColor,
       height: double.infinity,
       width: double.infinity,
-      child: _getMainContent(context),
+      child:
+          BlocBuilder<WorkoutsCubit, WorkoutsState>(builder: (context, state) {
+        if (state is WorkoutsReloadState) {
+          return _getMainContent(context);
+        } else {
+          return Center(
+              child: CupertinoActivityIndicator(
+            radius: 17,
+          ));
+        }
+      }),
     );
   }
 
   Widget _getMainContent(BuildContext context) {
+    final cubit = BlocProvider.of<WorkoutsCubit>(context);
     return BlocBuilder<WorkoutsCubit, WorkoutsState>(
-      buildWhen: (_, currState) => currState is WorkoutsReloadState,
       builder: (context, state) {
         return Padding(
           padding: const EdgeInsets.only(top: 50),
@@ -49,11 +58,8 @@ class WorkoutsContent extends StatelessWidget {
               const SizedBox(height: 5),
               Expanded(
                 child: ListView(
-                  children: DataConstants.workouts
-                      .map(
-                        (e) => _getWorkoutItem(e),
-                      )
-                      .toList(),
+                  children:
+                      cubit.workouts.map((e) => _getWorkoutItem(e)).toList(),
                 ),
               ),
             ],

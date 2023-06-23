@@ -48,11 +48,10 @@ class NotificationsCubit extends Cubit<NotificationsState> {
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);
 
-    final userName = user?.displayName ?? "";
     await flutterNotificationsPlugin.zonedSchedule(
       1,
       "Fitness",
-      "Hey, $userName! It's time to start exercising!",
+      "Hey! It's time to start exercising!",
       _scheduleWeekly(dateTime, days: _getNotificationDay(dayTime)),
       platformChannelSpecifics,
       uiLocalNotificationDateInterpretation:

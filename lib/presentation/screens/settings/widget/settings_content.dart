@@ -1,12 +1,13 @@
 // import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/settings/settings_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_dialogs.dart';
 import 'package:fitness_app/presentation/widgets/app_loading.dart';
 import 'package:fitness_app/presentation/widgets/app_settings_container.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,11 +33,9 @@ class _SettingsContentState extends State<SettingsContent> {
           if (state.isShow) {
             return _getLoading();
           }
-        }
-        if (state is SettingsFillDataState) {
+        } else if (state is SettingsFillDataState) {
           _fillData(state.user, context);
-        }
-        if (state is SettingsErrorFillDataState) {
+        } else if (state is SettingsErrorFillDataState) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Dialogs.showInformDialog(
                 context: context,
@@ -45,10 +44,12 @@ class _SettingsContentState extends State<SettingsContent> {
                   Navigator.of(context).pushReplacementNamed('/login');
                 });
           });
+        } else {
+          return Center(
+              child: CupertinoActivityIndicator(
+            radius: 17,
+          ));
         }
-        // else {
-        //   return const SizedBox();
-        // }
         return Container(
             color: ColorConstants.backgroundColor,
             height: double.infinity,

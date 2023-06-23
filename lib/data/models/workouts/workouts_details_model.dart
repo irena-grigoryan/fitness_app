@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-class WorkoutDetailsData {
+class WorkoutDetailsModel {
   String? id;
   String? title;
   int? minutes;
@@ -8,7 +8,7 @@ class WorkoutDetailsData {
   String? video;
   List<String>? steps;
 
-  WorkoutDetailsData({
+  WorkoutDetailsModel({
     this.id,
     this.title,
     this.minutes,
@@ -17,7 +17,7 @@ class WorkoutDetailsData {
     this.steps,
   });
 
-  WorkoutDetailsData.fromJson(Map<String, dynamic> json) {
+  WorkoutDetailsModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     title = json['title'];
     minutes = json['minutes'];

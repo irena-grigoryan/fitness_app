@@ -1,4 +1,4 @@
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/presentation/screens/reset_password/reset_password_cubit.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
 import 'package:fitness_app/presentation/screens/reset_password/widget/reset_password_content.dart';

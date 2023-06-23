@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:fitness_app/core/constants/global_constants.dart';
+import 'package:fitness_app/presentation/constants/global_constants.dart';
 import 'package:fitness_app/data/data_sources/workouts_local_data_source.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 

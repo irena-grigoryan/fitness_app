@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
-// import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fitness_app/core/constants/global_constants.dart';
+import 'package:fitness_app/presentation/constants/global_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
-import 'package:fitness_app/data/workouts_details_data.dart';
+import 'package:fitness_app/data/models/workouts/workouts_details_model.dart';
 import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/domain/use_cases/user/get_user_data_use_case.dart';
 import 'package:fitness_app/domain/use_cases/workouts/get_workouts_use_case.dart';
@@ -37,7 +36,7 @@ class HomeCubit extends Cubit<HomeState> {
 
   List<Workout> workouts = <Workout>[];
 
-  List<WorkoutDetailsData> exercises = <WorkoutDetailsData>[];
+  List<WorkoutDetailsModel> exercises = <WorkoutDetailsModel>[];
   int timeSent = 0;
 
   int? getFinished() {

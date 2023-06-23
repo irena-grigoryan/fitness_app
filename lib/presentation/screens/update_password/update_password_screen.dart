@@ -1,12 +1,14 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
+import 'package:fitness_app/data/services/validation_service.dart';
+import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/update_password/update_password_cubit.dart';
 import 'package:fitness_app/presentation/screens/update_profile/update_profile_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
 import 'package:fitness_app/presentation/widgets/app_loading.dart';
 import 'package:fitness_app/presentation/widgets/app_settings_container.dart';
 import 'package:fitness_app/presentation/widgets/settings_textField.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
@@ -52,21 +54,24 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
       child: BlocConsumer<UpdatePasswordCubit, UpdatePasswordState>(
         builder: (context, state) {
           if (state is UpdatePasswordFillDataState) {
-            fillUserData(context);
-          }
-          if (state is UpdateProfileProgressState)
+            fillUserData(state.user, context);
+          } else if (state is UpdateProfileProgressState)
             return Stack(children: [_getMainContent(context), AppLoading()]);
-          if (state is UpdatePasswordErrorState) {
+          else if (state is UpdatePasswordErrorState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.error)));
             });
-          }
-          if (state is UpdatePasswordSuccessState) {
+          } else if (state is UpdatePasswordSuccessState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               ScaffoldMessenger.of(context)
                   .showSnackBar(SnackBar(content: Text(state.message)));
             });
+          } else {
+            return Center(
+                child: CupertinoActivityIndicator(
+              radius: 17,
+            ));
           }
           return _getMainContent(context);
         },
@@ -86,7 +91,10 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
             height: height - 140 - MediaQuery.of(context).padding.bottom,
             child:
                 Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text('$userName, ${TextConstants.updatePassword}',
+              Text(
+                  userName == null
+                      ? ''
+                      : '$userName, ${TextConstants.updatePassword}',
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w300,
@@ -147,8 +155,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     );
   }
 
-  fillUserData(BuildContext context) {
-    final cubit = BlocProvider.of<UpdatePasswordCubit>(context);
-    userName = cubit.userName;
+  fillUserData(UserEntity user, BuildContext context) {
+    userName = user.name;
   }
 }

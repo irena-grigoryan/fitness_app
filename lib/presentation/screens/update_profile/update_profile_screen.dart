@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
-import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
+import 'package:fitness_app/data/services/validation_service.dart';
 import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/update_profile/update_profile_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_button.dart';
@@ -12,6 +12,7 @@ import 'package:fitness_app/presentation/widgets/app_loading.dart';
 import 'package:fitness_app/presentation/widgets/app_settings_container.dart';
 import 'package:fitness_app/presentation/widgets/settings_textField.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -66,15 +67,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
         builder: (context, state) {
           if (state is UpdateProfileFillDataState) {
             fillUserData(context, state.user);
-          }
-          if (state is UpdateProfileProgressState) {
+          } else if (state is UpdateProfileProgressState) {
             if (state.isShow) {
               return Stack(
                 children: [_getMainContent(context), _getLoading()],
               );
             }
-          }
-          if (state is UpdateProfileErrorState) {
+          } else if (state is UpdateProfileErrorState) {
             WidgetsBinding.instance.addPostFrameCallback((_) async {
               Dialogs.showOpenSettingsDialog(
                   context: context,
@@ -82,11 +81,9 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                   content: TextConstants.cameAccess,
                   onPressed: openAppSettings);
             });
-          }
-          if (state is UpdateProfilePhotoSuccessState) {
+          } else if (state is UpdateProfilePhotoSuccessState) {
             photoUrl = state.image.path;
-          }
-          if (state is UpdateProfileSuccessState) {
+          } else if (state is UpdateProfileSuccessState) {
             Future.delayed(Duration.zero, () {
               Dialogs.showInformDialog(
                   context: context,
@@ -95,8 +92,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     Navigator.of(context).pushReplacementNamed('/main');
                   });
             });
-          }
-          if (state is UpdateProfileErrorFillDataState) {
+          } else if (state is UpdateProfileErrorFillDataState) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Dialogs.showInformDialog(
                   context: context,
@@ -105,7 +101,13 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
                     Navigator.of(context).pushReplacementNamed('/login');
                   });
             });
+          } else {
+            return Center(
+                child: CupertinoActivityIndicator(
+              radius: 17,
+            ));
           }
+
           return _getMainContent(context);
         },
         listener: (context, state) {},

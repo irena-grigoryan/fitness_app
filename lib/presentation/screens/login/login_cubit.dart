@@ -1,4 +1,5 @@
-import 'package:fitness_app/core/services/validation_service.dart';
+import 'package:fitness_app/data/services/firebase_service.dart';
+import 'package:fitness_app/data/services/validation_service.dart';
 import 'package:fitness_app/domain/use_cases/auth/login_use_case.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
@@ -25,7 +26,8 @@ class LoginCubit extends Cubit<LoginState> {
         };
         await _loginUseCase.call(params: map);
 
-        // await AuthService.login(emailController.text, passwordController.text);
+        await FirebaseService.login(
+            emailController.text, passwordController.text);
         emit(LoginNextMainScreenState());
       } catch (e) {
         emit(LoginErrorState(message: e.toString()));

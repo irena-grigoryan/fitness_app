@@ -1,7 +1,7 @@
-import 'package:fitness_app/core/constants/color_constants.dart';
-import 'package:fitness_app/core/constants/data_constants.dart';
-import 'package:fitness_app/core/constants/path_constants.dart';
-import 'package:fitness_app/core/constants/text_constants.dart';
+import 'package:fitness_app/presentation/constants/color_constants.dart';
+import 'package:fitness_app/presentation/constants/data_constants.dart';
+import 'package:fitness_app/presentation/constants/path_constants.dart';
+import 'package:fitness_app/presentation/constants/text_constants.dart';
 import 'package:fitness_app/data/models/workouts/workouts_model.dart';
 import 'package:fitness_app/domain/entities/user_entity.dart';
 import 'package:fitness_app/presentation/screens/home/home_cubit.dart';
@@ -9,6 +9,7 @@ import 'package:fitness_app/presentation/screens/home/widget/home_workout_progre
 import 'package:fitness_app/presentation/screens/home/widget/home_workout_card.dart';
 import 'package:fitness_app/presentation/screens/main/main_cubit.dart';
 import 'package:fitness_app/presentation/widgets/app_dialogs.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,6 +44,11 @@ class _HomeContentState extends State<HomeContent> {
                   Navigator.of(context).pushReplacementNamed('/login');
                 });
           });
+        } else {
+          return Center(
+              child: CupertinoActivityIndicator(
+            radius: 17,
+          ));
         }
         return Container(
           color: ColorConstants.backgroundColor,
@@ -141,16 +147,10 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   Widget _getProfileData(BuildContext context) {
-    // final User? user = FirebaseAuth.instance.currentUser;
-    // var photoUrl = user?.photoURL;
-
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
-          // final userName =
-          //     state is HomeFillDataState ? state.userName : 'Dear friend';
-          // final photoUrl = state is HomeFillDataState ? state.photoURL : null;
           return Row(
             children: [
               GestureDetector(
@@ -263,9 +263,6 @@ class _HomeContentState extends State<HomeContent> {
   }
 
   void _fillData(UserEntity user, BuildContext context) {
-    // final cubit = BlocProvider.of<HomeCubit>(context);
-    // userName = cubit.userName;
-    // photoUrl = cubit.photoUrl;
     if (user.name != null) {
       userName = user.name;
     }
