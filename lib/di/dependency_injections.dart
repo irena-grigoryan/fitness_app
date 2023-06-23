@@ -9,7 +9,6 @@ import 'package:fitness_app/data/repositories/workouts_repository_impl.dart';
 import 'package:fitness_app/domain/repositories/auth_repository.dart';
 import 'package:fitness_app/domain/repositories/user_repository.dart';
 import 'package:fitness_app/domain/repositories/workouts_repository.dart';
-import 'package:fitness_app/domain/use_cases/auth/create_user_use_case.dart';
 import 'package:fitness_app/domain/use_cases/auth/deactivate_use_case.dart';
 import 'package:fitness_app/domain/use_cases/auth/get_token_use_case.dart';
 import 'package:fitness_app/domain/use_cases/auth/log_out_use_case.dart';
@@ -72,7 +71,6 @@ Future<void> init() async {
   sl.registerFactory(() => UpdatePhotoUseCase(sl()));
   sl.registerFactory(() => UpdatePasswordUseCase(sl()));
   sl.registerFactory(() => GetUserDataUseCase(sl()));
-  sl.registerFactory(() => CreateUserUseCase(sl()));
   sl.registerFactory(() => SaveWorkoutsUseCase(sl()));
   sl.registerFactory(() => GetWorkoutsUseCase(sl()));
 

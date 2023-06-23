@@ -4,8 +4,6 @@ import 'http_manager.dart';
 abstract class AuthRemoteDataSource {
   Future login(String email, String password);
   Future registration(String email, String password);
-  Future createUser(String localId, String email, String name, String photoUrl,
-      String idToken);
   Future resetPassword(String email);
   Future logout();
   Future deactivate(String idToken);
@@ -32,17 +30,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     map['password'] = password;
     map['returnSecureToken'] = true;
     return httpManager.post('accounts:signUp', json.encode(map));
-  }
-
-  @override
-  Future createUser(String localId, String email, String name, String photoUrl,
-      String idToken) {
-    final map = <String, Object>{};
-    map['id'] = localId;
-    map['email'] = email;
-    map['name'] = name;
-    return httpManager.postToStorage(
-        'users/$localId.json?auth=$idToken', json.encode(map));
   }
 
   @override

@@ -35,7 +35,7 @@ class RegistrationContent extends StatelessWidget {
                     if (state.isShow) {
                       return _getLoading();
                     }
-                  } else if (state is RegistrationNextMainScreenState ||
+                  } else if (state is RegistrationSuccessState ||
                       state is RegistrationErrorMessageState) {
                     return const SizedBox();
                   }
@@ -93,7 +93,7 @@ class RegistrationContent extends StatelessWidget {
   Widget _getForm(BuildContext context) {
     final cubit = BlocProvider.of<RegistrationCubit>(context);
     return BlocBuilder<RegistrationCubit, RegistrationState>(
-      buildWhen: (_, currState) => currState is RegistrationShowErrorState,
+      buildWhen: (_, currState) => currState is RegistrationInvalidFieldsState,
       builder: (context, state) {
         return Column(
           children: [
@@ -105,7 +105,7 @@ class RegistrationContent extends StatelessWidget {
                 controller: cubit.userNameController,
                 textInputAction: TextInputAction.next,
                 errorText: TextConstants.usernameErrorText,
-                isError: state is RegistrationShowErrorState
+                isError: state is RegistrationInvalidFieldsState
                     ? !ValidationService.isUsernameValid(
                         cubit.userNameController.text)
                     : false,
@@ -122,7 +122,7 @@ class RegistrationContent extends StatelessWidget {
               keyboardType: TextInputType.emailAddress,
               controller: cubit.emailController,
               errorText: TextConstants.emailErrorText,
-              isError: state is RegistrationShowErrorState
+              isError: state is RegistrationInvalidFieldsState
                   ? !ValidationService.isEmailValid(cubit.emailController.text)
                   : false,
               onTextChanged: () {
@@ -134,7 +134,7 @@ class RegistrationContent extends StatelessWidget {
               title: TextConstants.password,
               placeholder: TextConstants.passwordPlaceholder,
               obscureText: true,
-              isError: state is RegistrationShowErrorState
+              isError: state is RegistrationInvalidFieldsState
                   ? !ValidationService.isPasswordValid(
                       cubit.passwordController.text)
                   : false,
@@ -150,7 +150,7 @@ class RegistrationContent extends StatelessWidget {
               title: TextConstants.confirmPassword,
               placeholder: TextConstants.confirmPasswordPlaceholder,
               obscureText: true,
-              isError: state is RegistrationShowErrorState
+              isError: state is RegistrationInvalidFieldsState
                   ? !ValidationService.isConfirmPasswordValid(
                       cubit.passwordController.text,
                       cubit.confirmPasswordController.text)

@@ -22,7 +22,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       create: (context) => di.sl(),
       child: BlocConsumer<RegistrationCubit, RegistrationState>(
         listener: (context, state) {
-          if (state is RegistrationNextMainScreenState) {
+          if (state is RegistrationSuccessState) {
             Navigator.of(context).pushNamed(MainScreen.routeName);
           } else if (state is RegistrationNextLoginPageState) {
             Navigator.of(context).pushNamed(LoginScreen.routeName);

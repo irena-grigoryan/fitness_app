@@ -19,7 +19,7 @@ class RegistrationButtonEnableChangedState extends RegistrationState {
   List<Object?> get props => [identityHashCode(this)];
 }
 
-class RegistrationShowErrorState extends RegistrationState {
+class RegistrationInvalidFieldsState extends RegistrationState {
   @override
   List<Object?> get props => throw [identityHashCode(this)];
 }
@@ -33,7 +33,7 @@ class RegistrationErrorMessageState extends RegistrationState {
   List<Object?> get props => [identityHashCode(message)];
 }
 
-class RegistrationNextMainScreenState extends RegistrationState {
+class RegistrationSuccessState extends RegistrationState {
   @override
   List<Object?> get props => [identityHashCode(this)];
 }

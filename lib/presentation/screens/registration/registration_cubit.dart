@@ -37,12 +37,12 @@ class RegistrationCubit extends Cubit<RegistrationState> {
         await _updateUserNameUseCase.call(params: userName);
 
         emit(RegistrationLoadingState(false));
-        emit(RegistrationNextMainScreenState());
+        emit(RegistrationSuccessState());
       } catch (e) {
         emit(RegistrationErrorMessageState(message: e.toString()));
       }
     } else {
-      emit(RegistrationShowErrorState());
+      emit(RegistrationInvalidFieldsState());
     }
   }
 

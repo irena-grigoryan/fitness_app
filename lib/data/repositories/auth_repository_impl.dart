@@ -24,18 +24,6 @@ class AuthRepositoryImpl implements AuthRepository {
       .then((value) => value != null ? saveUserKeys(value) : null);
 
   @override
-  Future createUser(String email, String name, String photoUrl) =>
-      local.getUserKeys().then((value) {
-        // final idToken = value['idToken'];
-        // final localId = value['localId'];
-        return authRemoteDataSource
-            .createUser(
-                value['localId']!, email, name, photoUrl, value['idToken']!)
-            .then((id) => local.setResponseId(id));
-        // .then((userId) => saveUserId(userId));
-      });
-
-  @override
   Future resetPassword(String email) =>
       authRemoteDataSource.resetPassword(email);
 
