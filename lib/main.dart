@@ -1,6 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:timezone/data/latest_10y.dart' as tz;
+
 import 'package:fitness_app/data/services/notification_service.dart';
+import 'package:fitness_app/di/dependency_injections.dart' as di;
 import 'package:fitness_app/presentation/screens/introduction/introduction_screen.dart';
 import 'package:fitness_app/presentation/screens/login/login_screen.dart';
 import 'package:fitness_app/presentation/screens/main/main_screen.dart';
@@ -10,11 +16,7 @@ import 'package:fitness_app/presentation/screens/reset_password/reset_password_s
 import 'package:fitness_app/presentation/screens/update_password/update_password_screen.dart';
 import 'package:fitness_app/presentation/screens/update_profile/update_profile_screen.dart';
 import 'package:fitness_app/presentation/screens/workout_steps/workout_steps_screen.dart';
-import 'package:flutter/material.dart';
-import 'package:fitness_app/di/dependency_injections.dart' as di;
-import 'package:flutter/services.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/data/latest_10y.dart' as tz;
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +24,9 @@ Future<void> main() async {
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await di.init();
   runApp(const MyApp());
 }
