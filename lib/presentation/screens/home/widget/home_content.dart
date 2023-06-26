@@ -62,6 +62,7 @@ class _HomeContentState extends State<HomeContent> {
 
   Widget _getMainContent(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20),
         children: [

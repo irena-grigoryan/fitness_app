@@ -39,6 +39,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   SafeArea getScreen(BuildContext context) {
     var cubit = context.read<IntroductionCubit>();
     return SafeArea(
+      bottom: false,
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Column(

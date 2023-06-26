@@ -84,6 +84,7 @@ class _UpdatePasswordScreenState extends State<UpdatePasswordScreen> {
     final cubit = BlocProvider.of<UpdatePasswordCubit>(context);
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),

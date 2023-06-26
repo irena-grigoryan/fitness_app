@@ -8,20 +8,21 @@ import '../../domain/repositories/auth_repository.dart';
 class AuthRepositoryImpl implements AuthRepository {
   final AuthRemoteDataSource authRemoteDataSource;
   final WorkoutsLocalDataSource workoutsLocalDataSource;
-  final UserLocalDataSource local;
+  final UserLocalDataSource userLocalDataSource;
 
   AuthRepositoryImpl(
-      this.local, this.authRemoteDataSource, this.workoutsLocalDataSource);
-
-  @override
-  Future login(String email, String password) => authRemoteDataSource
-      .login(email, password)
-      .then((value) => value != null ? saveUserKeys(value) : null);
+      this.userLocalDataSource, this.authRemoteDataSource, this.workoutsLocalDataSource);
 
   @override
   Future registration(String email, String password) => authRemoteDataSource
       .registration(email, password)
       .then((value) => value != null ? saveUserKeys(value) : null);
+      
+  @override
+  Future login(String email, String password) => authRemoteDataSource
+      .login(email, password)
+      .then((value) => value != null ? saveUserKeys(value) : null);
+
 
   @override
   Future resetPassword(String email) =>
@@ -31,7 +32,7 @@ class AuthRepositoryImpl implements AuthRepository {
   Future logout() => authRemoteDataSource.logout().then((value) {
         final currentUserEmail = GlobalConstants.currentUser.email;
         return {
-          local.clearData(),
+          userLocalDataSource.clearData(),
           workoutsLocalDataSource
               .deleteData('${currentUserEmail}Workouts')
               .then((_) => FirebaseService.logOut()),
@@ -40,18 +41,18 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future saveKeys(String? token, String? localId) {
-    return local.setUserKeys(token, localId);
+    return userLocalDataSource.setUserKeys(token, localId);
   }
 
   Future saveUserKeys(result) => saveKeys(result['idToken'], result['localId']);
 
   @override
-  Future getToken() => local.getUserKeys();
+  Future getToken() => userLocalDataSource.getUserKeys();
 
   @override
   Future deactivate() => getToken()
       .then((token) => token['idToken'] == null
           ? throw Exception('login again')
           : authRemoteDataSource.deactivate(token['idToken']))
-      .then((value) => local.clearData());
+      .then((value) => userLocalDataSource.clearData());
 }

@@ -11,17 +11,7 @@ abstract class AuthRemoteDataSource {
 
 class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   HttpManager httpManager;
-  Object? response;
   AuthRemoteDataSourceImpl(this.httpManager);
-
-  @override
-  Future login(String email, String password) async {
-    final map = <String, Object>{};
-    map['email'] = email;
-    map['password'] = password;
-    map['returnSecureToken'] = true;
-    return httpManager.post('accounts:signInWithPassword', json.encode(map));
-  }
 
   @override
   Future registration(String email, String password) {
@@ -30,6 +20,15 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     map['password'] = password;
     map['returnSecureToken'] = true;
     return httpManager.post('accounts:signUp', json.encode(map));
+  }
+
+  @override
+  Future login(String email, String password) async {
+    final map = <String, Object>{};
+    map['email'] = email;
+    map['password'] = password;
+    map['returnSecureToken'] = true;
+    return httpManager.post('accounts:signInWithPassword', json.encode(map));
   }
 
   @override

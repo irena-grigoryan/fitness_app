@@ -64,6 +64,7 @@ class _SettingsContentState extends State<SettingsContent> {
   Widget _getSettingsBody(BuildContext context) {
     final cubit = BlocProvider.of<SettingsCubit>(context);
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 34, left: 24, right: 24),

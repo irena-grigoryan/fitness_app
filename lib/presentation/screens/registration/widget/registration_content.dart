@@ -51,6 +51,7 @@ class RegistrationContent extends StatelessWidget {
 
   Widget _getMainData(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         child: Column(
           children: [

@@ -6,13 +6,10 @@ import 'package:http/http.dart' as http;
 abstract class HttpManager {
   Future post(String path, Object? body);
   Future get(String path);
-  Future postToStorage(String path, Object? body);
-  Future getFromStorage(String path);
 }
 
 class HttpManagerImpl implements HttpManager {
   final String url = api.url;
-  final String storageUrl = api.storageUrl;
   final String apiKey = api.apiKey;
 
   @override
@@ -25,19 +22,6 @@ class HttpManagerImpl implements HttpManager {
   @override
   Future<dynamic> get(String path) async {
     final response = await http.get(Uri.parse('${url + path + apiKey}'));
-    return inspectResponse(response);
-  }
-
-  @override
-  Future postToStorage(String path, Object? body) async {
-    final response =
-        await http.post(Uri.parse('${storageUrl + path}'), body: body);
-    return inspectResponse(response);
-  }
-
-  @override
-  Future getFromStorage(String path) async {
-    final response = await http.get(Uri.parse('${storageUrl + path}'));
     return inspectResponse(response);
   }
 

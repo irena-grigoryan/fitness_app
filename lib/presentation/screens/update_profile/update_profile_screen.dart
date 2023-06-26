@@ -119,6 +119,7 @@ class _UpdateProfileScreenState extends State<UpdateProfileScreen> {
     final cubit = BlocProvider.of<UpdateProfileCubit>(context);
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 20.0),

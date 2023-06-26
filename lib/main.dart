@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
-
 import 'package:fitness_app/data/services/notification_service.dart';
 import 'package:fitness_app/di/dependency_injections.dart' as di;
 import 'package:fitness_app/presentation/screens/introduction/introduction_screen.dart';

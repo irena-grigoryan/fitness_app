@@ -28,6 +28,7 @@ class WorkoutStartContent extends StatelessWidget {
       width: double.infinity,
       color: ColorConstants.white,
       child: SafeArea(
+        bottom: false,
         child: Scaffold(body: _getSlidingUpPanel(context)),
       ),
     );

@@ -51,6 +51,7 @@ class _ResetPasswordContentState extends State<ResetPasswordContent> {
   Widget _getMainData(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
+      bottom: false,
       child: SingleChildScrollView(
         child: SizedBox(
           height: height -
