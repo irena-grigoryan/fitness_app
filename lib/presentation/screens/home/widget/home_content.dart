@@ -130,14 +130,14 @@ class _HomeContentState extends State<HomeContent> {
                   color: ColorConstants.purple,
                   workout: DataConstants.topWorkouts[0],
                   onTap: () {
-                    // go to detail screen
+                    cubitMain.selectItem(0);
                   }),
               const SizedBox(width: 15),
               WorkoutCard(
                   color: ColorConstants.turquoise,
                   workout: DataConstants.topWorkouts[1],
                   onTap: () {
-                    // go to detail screen
+                    cubitMain.selectItem(0);
                   }),
               SizedBox(width: 20),
             ],
